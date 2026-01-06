@@ -1,0 +1,39 @@
+.app {
+  min-height: 100vh;
+  background: #f5f7fa;
+}
+
+.app-header {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  padding: 2rem;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.app-header h1 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  font-weight: 600;
+}
+
+.loading {
+  text-align: center;
+  padding: 3rem;
+  font-size: 1.2rem;
+  color: #666;
+}
+
+.app-content {
+  display: flex;
+  gap: 1rem;
+  padding: 1rem;
+  max-width: 1800px;
+  margin: 0 auto;
+}
+
+@media (max-width: 1200px) {
+  .app-content {
+    flex-direction: column;
+  }
+}
+
