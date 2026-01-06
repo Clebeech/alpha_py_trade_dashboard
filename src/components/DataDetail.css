@@ -304,9 +304,42 @@
 @media (max-width: 1200px) {
   .data-detail {
     width: 100%;
-    position: relative;
-    max-height: none;
+    position: fixed; /* 移动端改为全屏覆盖 */
     top: 0;
+    left: 0;
+    height: 100vh;
+    max-height: 100vh;
+    border-radius: 0;
+    z-index: 1000;
+    border: none;
+  }
+
+  .detail-content {
+    padding-bottom: 5rem; /* 底部留白防止遮挡 */
+  }
+
+  .header-actions {
+    gap: 0.5rem;
+  }
+
+  .detail-nav {
+    display: none; /* 移动端隐藏快捷导航，空间不足 */
+  }
+
+  .hero-name {
+    font-size: 1.25rem;
+  }
+
+  .score-val {
+    font-size: 2rem;
+  }
+
+  .scores-grid {
+    grid-template-columns: 1fr; /* 移动端评分改为单列 */
+  }
+
+  .info-grid {
+    grid-template-columns: 1fr;
   }
 }
 

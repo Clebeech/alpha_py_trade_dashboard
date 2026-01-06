@@ -20,7 +20,7 @@ function DataDetail({ item, onClose }) {
   };
 
   return (
-    <div className="data-detail">
+    <div className={`data-detail ${item ? 'active' : ''}`}>
       <div className="detail-header">
         <div className="header-title">
           <ShieldCheck className="title-icon" />

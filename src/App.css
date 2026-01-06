@@ -74,10 +74,38 @@
   100% { transform: rotate(360deg); }
 }
 
-@media (max-width: 1200px) {
-  .app-content {
-    flex-direction: column;
+@media (max-width: 768px) {
+  .app-header {
     padding: 1rem;
+    flex-direction: column;
+    gap: 1rem;
+    align-items: flex-start;
+  }
+
+  .header-left {
+    width: 100%;
+  }
+
+  .app-header h1 {
+    font-size: 1.25rem;
+  }
+
+  .file-selector {
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .file-select {
+    flex: 1;
+  }
+
+  .app-content {
+    padding: 1rem;
+    gap: 1rem;
+  }
+
+  .loading-container {
+    padding: 5rem 0;
   }
 }
 

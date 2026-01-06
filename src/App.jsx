@@ -17,6 +17,16 @@ function App() {
     loadData(selectedFile)
   }, [selectedFile])
 
+  // 移动端适配：当选中项目时，禁用背景滚动
+  useEffect(() => {
+    if (window.innerWidth <= 1200) {
+      document.body.style.overflow = selectedItem ? 'hidden' : 'auto'
+    }
+    return () => {
+      document.body.style.overflow = 'auto'
+    }
+  }, [selectedItem])
+
   const loadData = async (filename) => {
     setLoading(true)
     try {
@@ -46,8 +56,12 @@ function App() {
           
           setData(parsedData)
           setLoading(false)
-          // 默认选择第一个
-          if (parsedData.length > 0) setSelectedItem(parsedData[0])
+          // 移动端不自动选中，PC端自动选中
+          if (window.innerWidth > 1200 && parsedData.length > 0) {
+            setSelectedItem(parsedData[0])
+          } else {
+            setSelectedItem(null)
+          }
         },
         error: (error) => {
           console.error('解析错误:', error)

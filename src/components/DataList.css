@@ -148,7 +148,44 @@
   transition: color 0.2s;
 }
 
-.list-item:hover .item-arrow {
-  color: var(--primary);
+@media (max-width: 768px) {
+  .list-container {
+    max-height: none; /* 移动端让页面自然滚动 */
+    overflow-y: visible;
+  }
+
+  .data-list {
+    overflow: visible;
+  }
+
+  .item-main {
+    gap: 0.75rem;
+  }
+
+  .item-rank-score {
+    min-width: 48px;
+  }
+
+  .item-score {
+    font-size: 1.25rem;
+  }
+
+  .stock-names {
+    font-size: 1rem;
+  }
+
+  .stock-codes {
+    font-size: 0.75rem;
+    display: none; /* 移动端隐藏代码，节省空间 */
+  }
+
+  .item-metrics {
+    gap: 0.25rem;
+  }
+
+  .metric-tag {
+    font-size: 0.7rem;
+    padding: 0.15rem 0.4rem;
+  }
 }
 
