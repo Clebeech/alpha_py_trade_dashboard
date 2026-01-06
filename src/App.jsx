@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react'
 import Papa from 'papaparse'
+import { LayoutDashboard } from 'lucide-react'
 import DataList from './components/DataList'
 import DataDetail from './components/DataDetail'
 import Statistics from './components/Statistics'
@@ -26,7 +27,6 @@ function App() {
         header: true,
         skipEmptyLines: true,
         complete: (results) => {
-          // 转换数据并排序
           const parsedData = results.data
             .map(item => ({
               ...item,
@@ -37,11 +37,17 @@ function App() {
               score_long: parseFloat(item.score_long) || 0,
               final_score: parseFloat(item.final_score) || 0,
             }))
-            .filter(item => item.identified_stock_names && item.identified_stock_names.trim() !== '')
+            .filter(item => 
+              item.identified_stock_names && 
+              item.identified_stock_names.trim() !== '' &&
+              item.final_score_penalized > 0
+            )
             .sort((a, b) => b.final_score_penalized - a.final_score_penalized)
           
           setData(parsedData)
           setLoading(false)
+          // 默认选择第一个
+          if (parsedData.length > 0) setSelectedItem(parsedData[0])
         },
         error: (error) => {
           console.error('解析错误:', error)
@@ -54,25 +60,29 @@ function App() {
     }
   }
 
-  const handleFileChange = (filename) => {
-    setSelectedFile(filename)
-    setSelectedItem(null)
-  }
-
   return (
     <div className="app">
       <header className="app-header">
-        <h1>交易数据看板</h1>
+        <div className="header-left">
+          <LayoutDashboard className="logo-icon" size={28} />
+          <h1>元神资本单公司策略交易看板</h1>
+        </div>
         <FileSelector 
           selectedFile={selectedFile} 
-          onFileChange={handleFileChange}
+          onFileChange={(file) => {
+            setSelectedFile(file)
+            setSelectedItem(null)
+          }}
         />
       </header>
 
       {loading ? (
-        <div className="loading">加载中...</div>
+        <div className="loading-container">
+          <div className="spinner"></div>
+          <p>正在深度分析数据...</p>
+        </div>
       ) : (
-        <>
+        <main>
           <Statistics data={data} />
           
           <div className="app-content">
@@ -81,14 +91,12 @@ function App() {
               onSelectItem={setSelectedItem}
               selectedItem={selectedItem}
             />
-            {selectedItem && (
-              <DataDetail 
-                item={selectedItem} 
-                onClose={() => setSelectedItem(null)}
-              />
-            )}
+            <DataDetail 
+              item={selectedItem} 
+              onClose={() => setSelectedItem(null)}
+            />
           </div>
-        </>
+        </main>
       )}
     </div>
   )

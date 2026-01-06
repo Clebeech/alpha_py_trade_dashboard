@@ -9,10 +9,12 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "lucide-react": "^0.562.0",
+    "papaparse": "^5.4.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-markdown": "^9.0.1",
-    "papaparse": "^5.4.1"
+    "remark-gfm": "^4.0.1"
   },
   "devDependencies": {
     "@types/react": "^18.2.43",
@@ -21,4 +23,3 @@
     "vite": "^5.0.8"
   }
 }
-

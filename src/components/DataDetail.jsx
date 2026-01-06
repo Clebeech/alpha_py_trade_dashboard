@@ -1,149 +1,139 @@
 import ReactMarkdown from 'react-markdown'
+import remarkGfm from 'remark-gfm'
+import { X, ExternalLink, ShieldCheck, Brain, FileText, BarChart } from 'lucide-react'
 import './DataDetail.css'
 
 function DataDetail({ item, onClose }) {
   if (!item) return null
 
   const getScoreColor = (score) => {
-    if (score >= 7) return '#10b981'
-    if (score >= 4) return '#f59e0b'
-    return '#ef4444'
+    if (score >= 80) return 'var(--success)'
+    if (score >= 70) return 'var(--warning)'
+    return 'var(--danger)'
   }
+
+  const scrollToSection = (id) => {
+    const element = document.getElementById(id);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
 
   return (
     <div className="data-detail">
       <div className="detail-header">
-        <h2>详细信息</h2>
-        <button className="close-btn" onClick={onClose}>×</button>
+        <div className="header-title">
+          <ShieldCheck className="title-icon" />
+          <h2>分析详情报告</h2>
+        </div>
+        <div className="header-actions">
+          <nav className="detail-nav">
+            <button onClick={() => scrollToSection('section-scores')} title="评分分布"><BarChart size={16} /></button>
+            <button onClick={() => scrollToSection('section-content')} title="当日纪要"><FileText size={16} /></button>
+            <button onClick={() => scrollToSection('section-map')} title="基本面图谱"><ExternalLink size={16} /></button>
+            <button onClick={() => scrollToSection('section-reasoning')} title="AI推理"><Brain size={16} /></button>
+          </nav>
+          <button className="close-btn" onClick={onClose}>
+            <X size={20} />
+          </button>
+        </div>
       </div>
 
       <div className="detail-content">
-        {/* 股票信息 */}
-        <section className="detail-section">
-          <h3 className="section-title">股票信息</h3>
-          <div className="stock-info">
-            <div className="info-row">
-              <span className="info-label">股票名称：</span>
-              <span className="info-value">{item.identified_stock_names || '-'}</span>
-            </div>
-            <div className="info-row">
-              <span className="info-label">股票代码：</span>
-              <span className="info-value code">{item.identified_stock_codes || '-'}</span>
+        {/* 股票核心概览 */}
+        <section className="detail-hero">
+          <div className="hero-main">
+            <h1 className="hero-name">{item.identified_stock_names || '未识别股票'}</h1>
+            <span className="hero-code">{item.identified_stock_codes}</span>
+          </div>
+          <div className="hero-score">
+            <div className="score-main" style={{ color: getScoreColor(item.final_score_penalized) }}>
+              <span className="score-val">{item.final_score_penalized.toFixed(1)}</span>
+              <span className="score-label">最终得分</span>
             </div>
           </div>
         </section>
 
-        {/* 得分信息 */}
-        <section className="detail-section">
-          <h3 className="section-title">得分详情</h3>
+        {/* 评分维度网格 */}
+        <section id="section-scores" className="detail-section">
+          <div className="section-header">
+            <BarChart size={18} />
+            <h3>多维评分分布</h3>
+          </div>
           <div className="scores-grid">
-            <div className="score-item">
-              <span className="score-label">最终得分（惩罚后）</span>
-              <span className="score-value" style={{ color: getScoreColor(item.final_score_penalized) }}>
-                {item.final_score_penalized.toFixed(2)}
-              </span>
-            </div>
-            <div className="score-item">
-              <span className="score-label">最终得分（原始）</span>
-              <span className="score-value">{item.final_score.toFixed(2)}</span>
-            </div>
-            <div className="score-item">
-              <span className="score-label">基本面得分</span>
-              <span className="score-value">{item.score_fundamental.toFixed(2)}</span>
-            </div>
-            <div className="score-item">
-              <span className="score-label">短期得分</span>
-              <span className="score-value">{item.score_short.toFixed(2)}</span>
-            </div>
-            <div className="score-item">
-              <span className="score-label">中期得分</span>
-              <span className="score-value">{item.score_medium.toFixed(2)}</span>
-            </div>
-            <div className="score-item">
-              <span className="score-label">长期得分</span>
-              <span className="score-value">{item.score_long.toFixed(2)}</span>
-            </div>
-            <div className="score-item">
-              <span className="score-label">总惩罚</span>
-              <span className="score-value">{item.penalty_total || 0}</span>
+            {[
+              { label: '基本面', val: item.score_fundamental },
+              { label: '短期', val: item.score_short },
+              { label: '中期', val: item.score_medium },
+              { label: '长期', val: item.score_long }
+            ].map(s => (
+              <div key={s.label} className="score-mini-card">
+                <span className="mini-label">{s.label}</span>
+                <div className="mini-bar-bg">
+                  <div className="mini-bar-fill" style={{ width: `${s.val}%`, backgroundColor: getScoreColor(s.val) }}></div>
+                </div>
+                <span className="mini-val">{s.val.toFixed(1)}</span>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        {/* 当日纪要 */}
+        <section id="section-content" className="detail-section">
+          <div className="section-header">
+            <FileText size={18} />
+            <h3>当日纪要内容</h3>
+          </div>
+          <div className="content-card">
+            <h4 className="content-title">{item.TITLE}</h4>
+            <div className="content-body">
+              {item.CONTENT}
             </div>
           </div>
         </section>
 
-        {/* 纪要信息 */}
-        <section className="detail-section">
-          <h3 className="section-title">当日纪要</h3>
-          <div className="content-box">
-            <div className="content-meta">
-              <span><strong>标题：</strong>{item.TITLE || '-'}</span>
-              <span><strong>日期：</strong>{item.CMNT_DATE || '-'}</span>
-            </div>
-            <div className="content-text">
-              {item.CONTENT || '无内容'}
-            </div>
+        {/* 分析图谱 */}
+        <section id="section-map" className="detail-section">
+          <div className="section-header">
+            <ExternalLink size={18} />
+            <h3>基本面图谱 (Enhanced Map)</h3>
           </div>
-        </section>
-
-        {/* 思考过程 - Enhanced Map */}
-        <section className="detail-section">
-          <h3 className="section-title">分析图谱（Enhanced Map）</h3>
-          <div className="markdown-box">
+          <div className="markdown-viewer">
             {item.enhanced_map ? (
-              <ReactMarkdown>{item.enhanced_map}</ReactMarkdown>
+              <ReactMarkdown remarkPlugins={[remarkGfm]}>
+                {item.enhanced_map}
+              </ReactMarkdown>
             ) : (
-              <div className="empty-content">无分析图谱</div>
+              <div className="empty-state">暂无增强图谱数据</div>
             )}
           </div>
         </section>
 
-        {/* 思考过程 - Reasoning Content */}
-        <section className="detail-section">
-          <h3 className="section-title">推理过程（Reasoning Content）</h3>
-          <div className="content-box">
-            {item.reasoning_content ? (
-              <div className="content-text">{item.reasoning_content}</div>
-            ) : (
-              <div className="empty-content">无推理内容</div>
-            )}
+        {/* 推理过程 */}
+        <section id="section-reasoning" className="detail-section">
+          <div className="section-header">
+            <Brain size={18} />
+            <h3>AI 推理思考过程</h3>
+          </div>
+          <div className="reasoning-card">
+            {item.reasoning_content || '暂无推理过程记录'}
           </div>
         </section>
 
-        {/* 其他信息 */}
+        {/* 标签元数据 */}
         <section className="detail-section">
-          <h3 className="section-title">其他信息</h3>
-          <div className="info-grid">
-            <div className="info-item">
-              <span className="info-label">驱动类别：</span>
-              <span className="info-value">{item.drive_category || '-'}</span>
-            </div>
-            <div className="info-item">
-              <span className="info-label">目标类型：</span>
-              <span className="info-value">{item.target_type || '-'}</span>
-            </div>
-            <div className="info-item">
-              <span className="info-label">原因：</span>
-              <span className="info-value">{item.reason || '-'}</span>
-            </div>
-            <div className="info-item">
-              <span className="info-label">数据类型：</span>
-              <span className="info-value">{item.data_type || '-'}</span>
-            </div>
-            <div className="info-item">
-              <span className="info-label">团队：</span>
-              <span className="info-value">{item.TEAM_CNAME || '-'}</span>
-            </div>
-            <div className="info-item">
-              <span className="info-label">机构：</span>
-              <span className="info-value">{item.INST_CNAME || '-'}</span>
-            </div>
-            <div className="info-item">
-              <span className="info-label">置信度：</span>
-              <span className="info-value">{item.confidence || '-'}</span>
-            </div>
-            <div className="info-item">
-              <span className="info-label">需要分析：</span>
-              <span className="info-value">{item.need_analysis || '-'}</span>
-            </div>
+          <div className="tags-container">
+            {[
+              { label: '驱动', val: item.drive_category },
+              { label: '目标', val: item.target_type },
+              { label: '机构', val: item.INST_CNAME },
+              { label: '置信度', val: item.confidence }
+            ].map(tag => tag.val && (
+              <div key={tag.label} className="info-tag">
+                <span className="tag-key">{tag.label}:</span>
+                <span className="tag-val">{tag.val}</span>
+              </div>
+            ))}
           </div>
         </section>
       </div>
