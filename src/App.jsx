@@ -10,11 +10,13 @@ import './App.css'
 function App() {
   const [data, setData] = useState([])
   const [selectedItem, setSelectedItem] = useState(null)
-  const [selectedFile, setSelectedFile] = useState('parallel_result_20260105.tsv')
+  const [selectedFile, setSelectedFile] = useState('') // 初始为空，由 FileSelector 自动选中最新的
   const [loading, setLoading] = useState(false)
 
   useEffect(() => {
-    loadData(selectedFile)
+    if (selectedFile) {
+      loadData(selectedFile)
+    }
   }, [selectedFile])
 
   // 移动端适配：当选中项目时，禁用背景滚动
