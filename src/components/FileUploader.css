@@ -1,6 +1,6 @@
 .file-uploader {
   width: 100%;
-  margin-bottom: 2rem;
+  margin: 0 2rem 2rem 2rem;
 }
 
 .upload-area {
@@ -109,5 +109,30 @@
   background: var(--danger);
   border-color: var(--danger);
   color: white;
+}
+
+/* 响应式布局 */
+@media (max-width: 1200px) {
+  .file-uploader {
+    margin: 0 1rem 2rem 1rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .file-uploader {
+    margin: 0 1rem 1.5rem 1rem;
+  }
+
+  .upload-area {
+    padding: 2rem 1rem;
+  }
+
+  .upload-area h3 {
+    font-size: 1rem;
+  }
+
+  .upload-area p {
+    font-size: 0.85rem;
+  }
 }
 
