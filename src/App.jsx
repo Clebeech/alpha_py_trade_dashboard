@@ -1,15 +1,16 @@
 import { useState, useEffect } from 'react'
 import Papa from 'papaparse'
-import { LayoutDashboard, FlaskConical, BarChart3 } from 'lucide-react'
+import { LayoutDashboard, FlaskConical, BarChart3, Activity } from 'lucide-react'
 import DataList from './components/DataList'
 import DataDetail from './components/DataDetail'
 import Statistics from './components/Statistics'
 import FileSelector from './components/FileSelector'
 import TestAnalysis from './components/TestAnalysis'
+import ReturnAnalysis from './components/ReturnAnalysis'
 import './App.css'
 
 function App() {
-  const [activeTab, setActiveTab] = useState('dashboard') // 'dashboard' or 'test'
+  const [activeTab, setActiveTab] = useState('dashboard') // 'dashboard', 'return', or 'test'
   const [data, setData] = useState([])
   const [selectedItem, setSelectedItem] = useState(null)
   const [selectedFile, setSelectedFile] = useState('') // 初始为空，由 FileSelector 自动选中最新的
@@ -96,6 +97,13 @@ function App() {
             <span>实时看板</span>
           </button>
           <button 
+            className={`tab-btn ${activeTab === 'return' ? 'active' : ''}`}
+            onClick={() => setActiveTab('return')}
+          >
+            <Activity size={18} />
+            <span>收益率分析</span>
+          </button>
+          <button 
             className={`tab-btn ${activeTab === 'test' ? 'active' : ''}`}
             onClick={() => setActiveTab('test')}
           >
@@ -104,7 +112,7 @@ function App() {
           </button>
         </div>
 
-        {activeTab === 'dashboard' && (
+        {(activeTab === 'dashboard' || activeTab === 'return') && (
         <FileSelector 
           selectedFile={selectedFile} 
           onFileChange={(file) => {
@@ -117,25 +125,36 @@ function App() {
 
       {activeTab === 'dashboard' ? (
         loading ? (
-        <div className="loading-container">
-          <div className="spinner"></div>
-          <p>正在深度分析数据...</p>
-        </div>
-      ) : (
-        <main>
-          <Statistics data={data} />
-          
-          <div className="app-content">
-            <DataList 
-              data={data} 
-              onSelectItem={setSelectedItem}
-              selectedItem={selectedItem}
-            />
-            <DataDetail 
-              item={selectedItem} 
-              onClose={() => setSelectedItem(null)}
-            />
+          <div className="loading-container">
+            <div className="spinner"></div>
+            <p>正在深度分析数据...</p>
           </div>
+        ) : (
+          <main>
+            <Statistics data={data} />
+            
+            <div className="app-content">
+              <DataList 
+                data={data} 
+                onSelectItem={setSelectedItem}
+                selectedItem={selectedItem}
+              />
+              <DataDetail 
+                item={selectedItem} 
+                onClose={() => setSelectedItem(null)}
+              />
+            </div>
+          </main>
+        )
+      ) : activeTab === 'return' ? (
+        loading ? (
+          <div className="loading-container">
+            <div className="spinner"></div>
+            <p>正在分析收益率数据...</p>
+          </div>
+        ) : (
+          <main>
+            <ReturnAnalysis data={data} />
           </main>
         )
       ) : (

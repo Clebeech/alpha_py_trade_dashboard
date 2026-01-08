@@ -71,14 +71,14 @@
   white-space: nowrap;
 }
 
-.stat-card.return-positive .stat-icon {
-  background: #ecfdf5;
-  color: var(--success);
+.stat-card.return-red .stat-icon {
+  background: #fef2f2;
+  color: #dc2626; /* 红色为正 */
 }
 
-.stat-card.return-negative .stat-icon {
-  background: #fef2f2;
-  color: var(--danger);
+.stat-card.return-green .stat-icon {
+  background: #f0fdf4;
+  color: #16a34a; /* 绿色为负 */
 }
 
 .stat-card.correlation.strong {

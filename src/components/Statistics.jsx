@@ -81,7 +81,7 @@ function Statistics({ data }) {
       </div>
       {stats.returnCount > 0 && (
         <>
-          <div className={`stat-card ${stats.avgReturn >= 0 ? 'return-positive' : 'return-negative'}`}>
+          <div className={`stat-card ${stats.avgReturn >= 0 ? 'return-red' : 'return-green'}`}>
             <div className="stat-icon">
               {stats.avgReturn >= 0 ? <TrendingUp size={24} /> : <TrendingDown size={24} />}
             </div>

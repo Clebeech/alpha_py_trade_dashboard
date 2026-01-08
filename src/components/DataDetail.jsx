@@ -13,8 +13,8 @@ function DataDetail({ item, onClose }) {
   }
   
   const getReturnColor = (returnVal) => {
-    if (returnVal > 0) return 'var(--success)'
-    if (returnVal < 0) return 'var(--danger)'
+    if (returnVal > 0) return '#dc2626' // 红色为正
+    if (returnVal < 0) return '#16a34a' // 绿色为负
     return 'var(--text-secondary)'
   }
   
