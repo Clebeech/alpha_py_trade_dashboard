@@ -40,6 +40,7 @@ function TestAnalysis() {
               score_medium: parseFloat(item.score_medium) || 0,
               score_long: parseFloat(item.score_long) || 0,
               final_score: parseFloat(item.final_score) || 0,
+              return: item.return ? parseFloat(item.return) : undefined,
             }))
             .filter(item => 
               item.identified_stock_names && 

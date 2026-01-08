@@ -60,6 +60,32 @@
   font-weight: 500;
 }
 
+.stat-sublabel {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  margin-top: 0.25rem;
+}
+
+.stat-range {
+  font-size: 0.875rem;
+  white-space: nowrap;
+}
+
+.stat-card.return-positive .stat-icon {
+  background: #ecfdf5;
+  color: var(--success);
+}
+
+.stat-card.return-negative .stat-icon {
+  background: #fef2f2;
+  color: var(--danger);
+}
+
+.stat-card.correlation.strong {
+  border-color: var(--primary);
+  background: linear-gradient(135deg, var(--surface) 0%, rgba(99, 102, 241, 0.05) 100%);
+}
+
 @media (max-width: 768px) {
   .statistics {
     padding: 1rem;

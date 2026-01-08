@@ -1,6 +1,6 @@
 import ReactMarkdown from 'react-markdown'
 import remarkGfm from 'remark-gfm'
-import { X, ExternalLink, ShieldCheck, Brain, FileText, BarChart } from 'lucide-react'
+import { X, ExternalLink, ShieldCheck, Brain, FileText, BarChart, TrendingUp, TrendingDown } from 'lucide-react'
 import './DataDetail.css'
 
 function DataDetail({ item, onClose }) {
@@ -11,6 +11,15 @@ function DataDetail({ item, onClose }) {
     if (score >= 70) return 'var(--warning)'
     return 'var(--danger)'
   }
+  
+  const getReturnColor = (returnVal) => {
+    if (returnVal > 0) return 'var(--success)'
+    if (returnVal < 0) return 'var(--danger)'
+    return 'var(--text-secondary)'
+  }
+  
+  const returnVal = parseFloat(item.return)
+  const hasReturn = !isNaN(returnVal)
 
   const scrollToSection = (id) => {
     const element = document.getElementById(id);
@@ -46,11 +55,22 @@ function DataDetail({ item, onClose }) {
             <h1 className="hero-name">{item.identified_stock_names || '未识别股票'}</h1>
             <span className="hero-code">{item.identified_stock_codes}</span>
           </div>
-          <div className="hero-score">
-            <div className="score-main" style={{ color: getScoreColor(item.final_score_penalized) }}>
-              <span className="score-val">{item.final_score_penalized.toFixed(1)}</span>
-              <span className="score-label">最终得分</span>
+          <div className="hero-metrics">
+            <div className="hero-score">
+              <div className="score-main" style={{ color: getScoreColor(item.final_score_penalized) }}>
+                <span className="score-val">{item.final_score_penalized.toFixed(1)}</span>
+                <span className="score-label">最终得分</span>
+              </div>
             </div>
+            {hasReturn && (
+              <div className="hero-return" style={{ color: getReturnColor(returnVal) }}>
+                <div className="return-main">
+                  {returnVal > 0 ? <TrendingUp size={24} /> : <TrendingDown size={24} />}
+                  <span className="return-val">{returnVal > 0 ? '+' : ''}{returnVal.toFixed(2)}%</span>
+                </div>
+                <span className="return-label">当日收益率</span>
+              </div>
+            )}
           </div>
         </section>
 

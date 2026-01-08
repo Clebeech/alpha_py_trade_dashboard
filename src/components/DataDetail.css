@@ -125,8 +125,14 @@
   border: 1px solid var(--border);
 }
 
+.hero-metrics {
+  display: flex;
+  gap: 2rem;
+  align-items: center;
+}
+
 .hero-score {
-  text-align: right;
+  text-align: center;
 }
 
 .score-main {
@@ -146,6 +152,35 @@
   font-weight: 700;
   text-transform: uppercase;
   margin-top: 0.25rem;
+}
+
+.hero-return {
+  text-align: center;
+  padding: 1rem;
+  background: rgba(255, 255, 255, 0.7);
+  border-radius: 12px;
+  border: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.return-main {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  justify-content: center;
+}
+
+.return-val {
+  font-size: 1.75rem;
+  font-weight: 800;
+  line-height: 1;
+}
+
+.return-label {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  margin-top: 0.5rem;
+  display: block;
 }
 
 /* Sections */

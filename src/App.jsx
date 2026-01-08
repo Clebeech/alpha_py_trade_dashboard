@@ -50,6 +50,7 @@ function App() {
               score_medium: parseFloat(item.score_medium) || 0,
               score_long: parseFloat(item.score_long) || 0,
               final_score: parseFloat(item.final_score) || 0,
+              return: item.return ? parseFloat(item.return) : undefined,
             }))
             .filter(item => 
               item.identified_stock_names && 
@@ -104,37 +105,37 @@ function App() {
         </div>
 
         {activeTab === 'dashboard' && (
-          <FileSelector 
-            selectedFile={selectedFile} 
-            onFileChange={(file) => {
-              setSelectedFile(file)
-              setSelectedItem(null)
-            }}
-          />
+        <FileSelector 
+          selectedFile={selectedFile} 
+          onFileChange={(file) => {
+            setSelectedFile(file)
+            setSelectedItem(null)
+          }}
+        />
         )}
       </header>
 
       {activeTab === 'dashboard' ? (
         loading ? (
-          <div className="loading-container">
-            <div className="spinner"></div>
-            <p>正在深度分析数据...</p>
+        <div className="loading-container">
+          <div className="spinner"></div>
+          <p>正在深度分析数据...</p>
+        </div>
+      ) : (
+        <main>
+          <Statistics data={data} />
+          
+          <div className="app-content">
+            <DataList 
+              data={data} 
+              onSelectItem={setSelectedItem}
+              selectedItem={selectedItem}
+            />
+            <DataDetail 
+              item={selectedItem} 
+              onClose={() => setSelectedItem(null)}
+            />
           </div>
-        ) : (
-          <main>
-            <Statistics data={data} />
-            
-            <div className="app-content">
-              <DataList 
-                data={data} 
-                onSelectItem={setSelectedItem}
-                selectedItem={selectedItem}
-              />
-              <DataDetail 
-                item={selectedItem} 
-                onClose={() => setSelectedItem(null)}
-              />
-            </div>
           </main>
         )
       ) : (
