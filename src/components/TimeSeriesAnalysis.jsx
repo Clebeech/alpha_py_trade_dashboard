@@ -1,6 +1,6 @@
 import { useState, useEffect, useMemo } from 'react'
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer, ReferenceLine, AreaChart, Area, BarChart, Bar } from 'recharts'
-import { Clock, TrendingUp, BarChart3, Activity, ChevronRight, PieChart, Landmark, Info } from 'lucide-react'
+import { Clock, TrendingUp, BarChart3, Activity, ChevronRight, PieChart, Landmark, Info, X, Calendar } from 'lucide-react'
 import './TimeSeriesAnalysis.css'
 
 function TimeSeriesAnalysis({ currentDayData = [], selectedDate = '' }) {
@@ -9,8 +9,9 @@ function TimeSeriesAnalysis({ currentDayData = [], selectedDate = '' }) {
   const [stockPrices, setStockPrices] = useState({})
   const [loading, setLoading] = useState(true)
   const [selectedStock, setSelectedStock] = useState(null)
+  const [showModal, setShowModal] = useState(false)
 
-  // 建立所选日期的个股收益率映射（从行情历史中提取，确保追踪池全覆盖）
+  // 建立所选日期的个股收益率映射
   const currentReturnsMap = useMemo(() => {
     const map = {}
     if (!selectedDate) return map
@@ -23,6 +24,18 @@ function TimeSeriesAnalysis({ currentDayData = [], selectedDate = '' }) {
     })
     return map
   }, [stockPrices, selectedDate])
+
+  // 按首次达标日期分组
+  const groupedStocks = useMemo(() => {
+    const groups = {}
+    Object.entries(stockPrices).forEach(([code, data]) => {
+      const date = data.first_hit_date
+      if (!groups[date]) groups[date] = []
+      groups[date].push({ code, ...data })
+    })
+    // 按日期排序
+    return Object.entries(groups).sort((a, b) => a[0].localeCompare(b[0]))
+  }, [stockPrices])
 
   useEffect(() => {
     const fetchData = async () => {
@@ -97,7 +110,6 @@ function TimeSeriesAnalysis({ currentDayData = [], selectedDate = '' }) {
     if (!selectedStock || !stockPrices[selectedStock]) return null
     const data = stockPrices[selectedStock]
     
-    // 计算归一化历史和收益率历史
     const firstHitIdx = data.history.findIndex(h => h.trade_date >= data.first_hit_date)
     const basePrice = firstHitIdx !== -1 ? data.history[firstHitIdx].close : data.history[0].close
     
@@ -110,6 +122,11 @@ function TimeSeriesAnalysis({ currentDayData = [], selectedDate = '' }) {
     
     return { ...data, history }
   }, [selectedStock, stockPrices])
+
+  const handleSelectStock = (code) => {
+    setSelectedStock(code)
+    setShowModal(true)
+  }
 
   if (loading) {
     return (
@@ -211,136 +228,125 @@ function TimeSeriesAnalysis({ currentDayData = [], selectedDate = '' }) {
           <div className="section-header-row">
             <h3>
               <Activity size={18} />
-              高分个股 (≥80分) 价格走势跟踪
+              高分个股 (≥80分) 追踪池
             </h3>
-            <span className="hint-text">点击左侧列表查看个股详情与行情数据</span>
+            <span className="hint-text">按首次入选日期排列，向右滑动查看历史记录，点击卡片查看详情</span>
           </div>
           
-          <div className="stock-tracking-layout">
-            <div className="stock-selector-list">
-              {Object.entries(stockPrices).map(([code, data]) => {
-                const dailyReturn = currentReturnsMap[code]
-                const returnClass = dailyReturn > 0 ? 'pos-return' : dailyReturn < 0 ? 'neg-return' : ''
-                
-                return (
-                  <div 
-                    key={code} 
-                    className={`stock-mini-card ${selectedStock === code ? 'active' : ''} ${returnClass}`}
-                    onClick={() => setSelectedStock(code)}
-                  >
-                    <div className="mini-card-info">
-                      <div className="mini-card-name">{data.name}</div>
-                      <div className="mini-card-code">
-                        {code}
-                        {dailyReturn !== undefined && (
-                          <span className={`mini-return-tag ${dailyReturn >= 0 ? 'pos' : 'neg'}`}>
-                            {dailyReturn > 0 ? '+' : ''}{dailyReturn.toFixed(2)}%
-                          </span>
-                        )}
-                      </div>
-                    </div>
-                    <ChevronRight size={16} className="mini-card-arrow" />
-                  </div>
-                )
-              })}
-            </div>
-
-            <div className="stock-detail-viewer">
-              {selectedStockData ? (
-                <>
-                  <div className="detail-viewer-header">
-                    <div className="header-main-info">
-                      <h4>{selectedStockData.name} <span className="code-text">{selectedStock}</span></h4>
-                      <div className="industry-tag">{selectedStockData.industry}</div>
-                    </div>
-                    <div className="hit-info">
-                      首次得高分日期: <strong>{selectedStockData.first_hit_date}</strong>
-                    </div>
-                  </div>
-
-                  <div className="market-metrics-grid">
-                    <div className="metric-box">
-                      <div className="metric-label">当前PE</div>
-                      <div className="metric-value">{selectedStockData.history.slice(-1)[0]?.pe?.toFixed(2) || '-'}</div>
-                    </div>
-                    <div className="metric-box">
-                      <div className="metric-label">当前PB</div>
-                      <div className="metric-value">{selectedStockData.history.slice(-1)[0]?.pb?.toFixed(2) || '-'}</div>
-                    </div>
-                    <div className="metric-box">
-                      <div className="metric-label">总市值</div>
-                      <div className="metric-value">{(selectedStockData.history.slice(-1)[0]?.total_mv / 10000).toFixed(2)}亿</div>
-                    </div>
-                    <div className="metric-box">
-                      <div className="metric-label">成交额</div>
-                      <div className="metric-value">{(selectedStockData.history.slice(-1)[0]?.amount / 100).toFixed(0)}万</div>
-                    </div>
-                  </div>
-
-                  <div className="detail-chart-container">
-                    <div className="chart-wrapper">
-                      <div className="chart-title">价格走势 (以得分日价格为100)</div>
-                      <ResponsiveContainer width="100%" height={300}>
-                        <AreaChart data={selectedStockData.history}>
-                          <defs>
-                            <linearGradient id="colorPrice" x1="0" y1="0" x2="0" y2="1">
-                              <stop offset="5%" stopColor="#6366f1" stopOpacity={0.1}/>
-                              <stop offset="95%" stopColor="#6366f1" stopOpacity={0}/>
-                            </linearGradient>
-                          </defs>
-                          <CartesianGrid strokeDasharray="3 3" vertical={false} opacity={0.2} />
-                          <XAxis 
-                            dataKey="displayDate" 
-                            style={{ fontSize: '11px' }}
-                          />
-                          <YAxis 
-                            domain={['auto', 'auto']} 
-                            style={{ fontSize: '11px' }}
-                            tickFormatter={(val) => `${val}`}
-                          />
-                          <Tooltip />
-                          <ReferenceLine x={selectedStockData.first_hit_date.substring(4)} stroke="#ef4444" strokeWidth={2} label={{ position: 'top', value: '得分≥80', fill: '#ef4444', fontSize: 11 }} />
-                          <ReferenceLine y={100} stroke="#94a3b8" strokeDasharray="3 3" />
-                          <Area 
-                            type="monotone" 
-                            dataKey="normalized" 
-                            stroke="#6366f1" 
-                            fillOpacity={1} 
-                            fill="url(#colorPrice)" 
-                            name="归一化价格"
-                            strokeWidth={3}
-                          />
-                        </AreaChart>
-                      </ResponsiveContainer>
-                    </div>
-
-                    <div className="chart-wrapper">
-                      <div className="chart-title">成交量变化</div>
-                      <ResponsiveContainer width="100%" height={150}>
-                        <BarChart data={selectedStockData.history}>
-                          <CartesianGrid strokeDasharray="3 3" vertical={false} opacity={0.2} />
-                          <XAxis 
-                            dataKey="displayDate" 
-                            style={{ fontSize: '11px' }}
-                          />
-                          <YAxis hide />
-                          <Tooltip />
-                          <Bar dataKey="vol" fill="#94a3b8" radius={[2, 2, 0, 0]} />
-                        </BarChart>
-                      </ResponsiveContainer>
-                    </div>
-                  </div>
-                </>
-              ) : (
-                <div className="empty-viewer">
-                  <Activity size={48} opacity={0.1} />
-                  <p>请选择股票查看走势</p>
+          <div className="kanban-container">
+            {groupedStocks.map(([date, stocks]) => (
+              <div key={date} className="kanban-column">
+                <div className="kanban-date-header">
+                  <Calendar size={14} />
+                  <span>{date}</span>
+                  <span className="count-badge">{stocks.length}</span>
                 </div>
-              )}
-            </div>
+                <div className="kanban-cards">
+                  {stocks.map(stock => {
+                    const dailyReturn = currentReturnsMap[stock.code]
+                    const returnClass = dailyReturn > 0 ? 'pos-return' : dailyReturn < 0 ? 'neg-return' : ''
+                    
+                    return (
+                      <div 
+                        key={stock.code} 
+                        className={`kanban-card ${returnClass} ${selectedStock === stock.code ? 'active' : ''}`}
+                        onClick={() => handleSelectStock(stock.code)}
+                      >
+                        <div className="kanban-card-top">
+                          <span className="stock-name">{stock.name}</span>
+                          {dailyReturn !== undefined && (
+                            <span className={`return-tag ${dailyReturn >= 0 ? 'pos' : 'neg'}`}>
+                              {dailyReturn > 0 ? '+' : ''}{dailyReturn.toFixed(2)}%
+                            </span>
+                          )}
+                        </div>
+                        <div className="stock-code">{stock.code}</div>
+                        <div className="stock-industry">{stock.industry}</div>
+                      </div>
+                    )
+                  })}
+                </div>
+              </div>
+            ))}
           </div>
         </section>
       </div>
+
+      {/* 详情模态框 */}
+      {showModal && selectedStockData && (
+        <div className="ts-modal-overlay" onClick={() => setShowModal(false)}>
+          <div className="ts-modal-content" onClick={e => e.stopPropagation()}>
+            <button className="modal-close" onClick={() => setShowModal(false)}>
+              <X size={24} />
+            </button>
+            
+            <div className="modal-header">
+              <div className="modal-title">
+                <h2>{selectedStockData.name} <span className="modal-code">{selectedStock}</span></h2>
+                <div className="modal-meta">
+                  <span className="industry-tag">{selectedStockData.industry}</span>
+                  <span className="hit-badge">首次触达: {selectedStockData.first_hit_date}</span>
+                </div>
+              </div>
+              
+              <div className="market-metrics-grid">
+                <div className="metric-box">
+                  <div className="metric-label">当前PE</div>
+                  <div className="metric-value">{selectedStockData.history.slice(-1)[0]?.pe?.toFixed(2) || '-'}</div>
+                </div>
+                <div className="metric-box">
+                  <div className="metric-label">当前PB</div>
+                  <div className="metric-value">{selectedStockData.history.slice(-1)[0]?.pb?.toFixed(2) || '-'}</div>
+                </div>
+                <div className="metric-box">
+                  <div className="metric-label">总市值</div>
+                  <div className="metric-value">{(selectedStockData.history.slice(-1)[0]?.total_mv / 10000).toFixed(2)}亿</div>
+                </div>
+                <div className="metric-box">
+                  <div className="metric-label">成交额</div>
+                  <div className="metric-value">{(selectedStockData.history.slice(-1)[0]?.amount / 100).toFixed(0)}万</div>
+                </div>
+              </div>
+            </div>
+
+            <div className="modal-body">
+              <div className="chart-wrapper main-chart">
+                <div className="chart-title">价格走势 (以得分日价格为100)</div>
+                <ResponsiveContainer width="100%" height={350}>
+                  <AreaChart data={selectedStockData.history}>
+                    <defs>
+                      <linearGradient id="modalColorPrice" x1="0" y1="0" x2="0" y2="1">
+                        <stop offset="5%" stopColor="#6366f1" stopOpacity={0.1}/>
+                        <stop offset="95%" stopColor="#6366f1" stopOpacity={0}/>
+                      </linearGradient>
+                    </defs>
+                    <CartesianGrid strokeDasharray="3 3" vertical={false} opacity={0.2} />
+                    <XAxis dataKey="displayDate" style={{ fontSize: '11px' }} />
+                    <YAxis domain={['auto', 'auto']} style={{ fontSize: '11px' }} />
+                    <Tooltip />
+                    <ReferenceLine x={selectedStockData.first_hit_date.substring(4)} stroke="#ef4444" strokeWidth={2} label={{ position: 'top', value: '得分≥80', fill: '#ef4444', fontSize: 11 }} />
+                    <ReferenceLine y={100} stroke="#94a3b8" strokeDasharray="3 3" />
+                    <Area type="monotone" dataKey="normalized" stroke="#6366f1" fillOpacity={1} fill="url(#modalColorPrice)" name="归一化价格" strokeWidth={3} />
+                  </AreaChart>
+                </ResponsiveContainer>
+              </div>
+
+              <div className="chart-wrapper vol-chart">
+                <div className="chart-title">成交量变化</div>
+                <ResponsiveContainer width="100%" height={150}>
+                  <BarChart data={selectedStockData.history}>
+                    <CartesianGrid strokeDasharray="3 3" vertical={false} opacity={0.2} />
+                    <XAxis dataKey="displayDate" style={{ fontSize: '11px' }} />
+                    <YAxis hide />
+                    <Tooltip />
+                    <Bar dataKey="vol" fill="#94a3b8" radius={[2, 2, 0, 0]} />
+                  </BarChart>
+                </ResponsiveContainer>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   )
 }
