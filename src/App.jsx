@@ -163,7 +163,7 @@ function App() {
         )
       ) : (
         <main>
-          <TimeSeriesAnalysis />
+          <TimeSeriesAnalysis currentDayData={data} />
         </main>
       )}
     </div>

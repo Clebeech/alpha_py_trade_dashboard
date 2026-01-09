@@ -3,12 +3,27 @@ import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, Responsi
 import { Clock, TrendingUp, BarChart3, Activity, ChevronRight, PieChart, Landmark, Info } from 'lucide-react'
 import './TimeSeriesAnalysis.css'
 
-function TimeSeriesAnalysis() {
+function TimeSeriesAnalysis({ currentDayData = [] }) {
   const [industryData, setIndustryData] = useState([])
   const [segmentData, setSegmentData] = useState([])
   const [stockPrices, setStockPrices] = useState({})
   const [loading, setLoading] = useState(true)
   const [selectedStock, setSelectedStock] = useState(null)
+
+  // 建立当前日期的个股收益率映射
+  const currentReturnsMap = useMemo(() => {
+    const map = {}
+    currentDayData.forEach(item => {
+      const codes = String(item.identified_stock_codes || '').split(',')
+      codes.forEach(code => {
+        const trimmedCode = code.trim()
+        if (trimmedCode && item.return !== undefined) {
+          map[trimmedCode] = parseFloat(item.return)
+        }
+      })
+    })
+    return map
+  }, [currentDayData])
 
   useEffect(() => {
     const fetchData = async () => {
@@ -204,19 +219,31 @@ function TimeSeriesAnalysis() {
           
           <div className="stock-tracking-layout">
             <div className="stock-selector-list">
-              {Object.entries(stockPrices).map(([code, data]) => (
-                <div 
-                  key={code} 
-                  className={`stock-mini-card ${selectedStock === code ? 'active' : ''}`}
-                  onClick={() => setSelectedStock(code)}
-                >
-                  <div className="mini-card-info">
-                    <div className="mini-card-name">{data.name}</div>
-                    <div className="mini-card-code">{code}</div>
+              {Object.entries(stockPrices).map(([code, data]) => {
+                const dailyReturn = currentReturnsMap[code]
+                const returnClass = dailyReturn > 0 ? 'pos-return' : dailyReturn < 0 ? 'neg-return' : ''
+                
+                return (
+                  <div 
+                    key={code} 
+                    className={`stock-mini-card ${selectedStock === code ? 'active' : ''} ${returnClass}`}
+                    onClick={() => setSelectedStock(code)}
+                  >
+                    <div className="mini-card-info">
+                      <div className="mini-card-name">{data.name}</div>
+                      <div className="mini-card-code">
+                        {code}
+                        {dailyReturn !== undefined && (
+                          <span className={`mini-return-tag ${dailyReturn >= 0 ? 'pos' : 'neg'}`}>
+                            {dailyReturn > 0 ? '+' : ''}{dailyReturn.toFixed(2)}%
+                          </span>
+                        )}
+                      </div>
+                    </div>
+                    <ChevronRight size={16} className="mini-card-arrow" />
                   </div>
-                  <ChevronRight size={16} className="mini-card-arrow" />
-                </div>
-              ))}
+                )
+              })}
             </div>
 
             <div className="stock-detail-viewer">
