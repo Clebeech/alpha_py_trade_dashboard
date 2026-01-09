@@ -145,7 +145,8 @@ function App() {
               />
             </div>
           </main>
-        ) : activeTab === 'return' ? (
+        )
+      ) : activeTab === 'return' ? (
         loading ? (
           <div className="loading-container">
             <div className="spinner"></div>
