@@ -53,7 +53,10 @@ function DataDetail({ item, onClose }) {
         <section className="detail-hero">
           <div className="hero-main">
             <h1 className="hero-name">{item.identified_stock_names || '未识别股票'}</h1>
-            <span className="hero-code">{item.identified_stock_codes}</span>
+            <div className="hero-subinfo">
+              <span className="hero-code">{item.identified_stock_codes}</span>
+              {item.industry && <span className="hero-industry-badge">{item.industry}</span>}
+            </div>
           </div>
           <div className="hero-metrics">
             <div className="hero-score">

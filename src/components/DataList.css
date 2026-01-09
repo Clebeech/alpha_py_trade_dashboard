@@ -168,6 +168,16 @@
   font-family: monospace;
 }
 
+.industry-badge {
+  background: #fdf2f8;
+  color: #be185d;
+  font-size: 0.75rem;
+  font-weight: 600;
+  padding: 0.125rem 0.5rem;
+  border-radius: 6px;
+  border: 1px solid #fce7f3;
+}
+
 .item-title {
   font-size: 0.875rem;
   color: var(--text-muted);

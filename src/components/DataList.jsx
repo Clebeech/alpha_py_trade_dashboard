@@ -83,6 +83,7 @@ function DataList({ data, onSelectItem, selectedItem }) {
                   <div className="stock-title-row">
                     <span className="stock-names">{item.identified_stock_names || '未识别股票'}</span>
                     <span className="stock-codes">{item.identified_stock_codes}</span>
+                    {item.industry && <span className="industry-badge">{item.industry}</span>}
                   </div>
                   <div className="item-title">{item.TITLE}</div>
                   

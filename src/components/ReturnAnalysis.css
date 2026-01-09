@@ -189,6 +189,22 @@
   border-radius: 8px;
 }
 
+.col-pearson,
+.col-range {
+  font-size: 0.875rem;
+  font-family: monospace;
+  color: var(--text-secondary);
+}
+
+.pearson-val {
+  font-weight: 700;
+  color: var(--text-secondary);
+}
+
+.pearson-val.strong {
+  color: var(--primary);
+}
+
 .table-header {
   background: #f1f5f9;
   font-weight: 600;

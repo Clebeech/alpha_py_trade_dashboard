@@ -107,6 +107,42 @@ function ReturnAnalysis({ data }) {
     spearman
   }
 
+  // 行业统计分析
+  const industryStats = useMemo(() => {
+    const industries = {}
+    dataWithReturn.forEach(item => {
+      const ind = item.industry || '未分类'
+      if (!industries[ind]) {
+        industries[ind] = {
+          label: ind,
+          count: 0,
+          returns: [],
+          scores: [],
+          positive: 0
+        }
+      }
+      industries[ind].count++
+      industries[ind].returns.push(item.return)
+      industries[ind].scores.push(item.score)
+      if (item.return > 0) industries[ind].positive++
+    })
+
+    return Object.values(industries)
+      .map(ind => {
+        const avgReturn = ind.returns.reduce((a, b) => a + b, 0) / ind.count
+        const pearsonInd = ind.count >= 3 ? calculatePearson(ind.scores, ind.returns) : 0
+        return {
+          ...ind,
+          avgReturn,
+          maxReturn: Math.max(...ind.returns),
+          minReturn: Math.min(...ind.returns),
+          positiveRate: (ind.positive / ind.count * 100),
+          pearson: pearsonInd
+        }
+      })
+      .sort((a, b) => b.avgReturn - a.avgReturn)
+  }, [dataWithReturn])
+
   const getCorrelationStrength = (corr) => {
     const abs = Math.abs(corr)
     if (abs > 0.7) return '强相关'
@@ -248,6 +284,60 @@ function ReturnAnalysis({ data }) {
                     className="chart-bar negative" 
                     style={{ width: `${100 - seg.positiveRate}%` }}
                     title={`负收益: ${seg.negative}`}
+                  />
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* 行业统计分析 */}
+      <section className="analysis-section">
+        <h3 className="section-title">
+          <BarChart3 size={18} />
+          行业统计分析
+        </h3>
+        <div className="segments-table">
+          <div className="table-header">
+            <div className="col-label">所属行业</div>
+            <div className="col-count">样本数</div>
+            <div className="col-return">平均收益</div>
+            <div className="col-pearson">相关性(r)</div>
+            <div className="col-positive">正收益率</div>
+            <div className="col-chart">正负分布</div>
+          </div>
+          {industryStats.map((ind, idx) => (
+            <div key={idx} className="table-row">
+              <div className="col-label">
+                <span className="segment-label">{ind.label}</span>
+              </div>
+              <div className="col-count">{ind.count}</div>
+              <div className="col-return">
+                <span className={ind.avgReturn >= 0 ? 'positive' : 'negative'}>
+                  {ind.avgReturn >= 0 ? '+' : ''}{ind.avgReturn.toFixed(2)}%
+                </span>
+              </div>
+              <div className="col-pearson">
+                <span className={`pearson-val ${Math.abs(ind.pearson) > 0.3 ? 'strong' : ''}`}>
+                  {ind.count >= 3 ? ind.pearson.toFixed(2) : '-'}
+                </span>
+              </div>
+              <div className="col-positive">
+                <span className="positive-rate">{ind.positiveRate.toFixed(1)}%</span>
+                <span className="positive-count">({ind.positive}/{ind.count})</span>
+              </div>
+              <div className="col-chart">
+                <div className="mini-chart">
+                  <div 
+                    className="chart-bar positive" 
+                    style={{ width: `${ind.positiveRate}%` }}
+                    title={`正收益: ${ind.positive}`}
+                  />
+                  <div 
+                    className="chart-bar negative" 
+                    style={{ width: `${100 - ind.positiveRate}%` }}
+                    title={`负收益: ${ind.negative}`}
                   />
                 </div>
               </div>

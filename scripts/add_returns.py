@@ -10,6 +10,16 @@ import sys
 
 DATA_DIR = Path(__file__).parent.parent / "public" / "data"
 PRICE_DATA_PATH = Path("/home/shared/data/raw/market/daily_k_data_hfq.parquet")
+INDUSTRY_DATA_PATH = Path("/home/shared/data/raw/industry/industry_shenwan.csv")
+
+def load_industry_data():
+    """加载行业映射数据"""
+    try:
+        df = pd.read_csv(INDUSTRY_DATA_PATH)
+        return df.set_index('stock_code')['industry'].to_dict()
+    except Exception as e:
+        print(f"加载行业数据失败: {e}")
+        return {}
 
 def load_price_data(trade_date):
     """加载指定日期的价格数据"""
@@ -58,9 +68,14 @@ def add_returns_to_file(input_file, output_file=None):
     
     print(f"加载 {len(price_data)} 只股票的价格数据")
     
-    # 为每条记录计算收益率
+    # 加载行业数据
+    industry_map = load_industry_data()
+    print(f"加载 {len(industry_map)} 只股票的行业数据")
+    
+    # 为每条记录计算收益率和行业
     returns_list = []
     valid_codes_list = []
+    industries_list = []
     
     for idx, row in df.iterrows():
         codes = parse_stock_codes(row.get('identified_stock_codes', ''))
@@ -68,18 +83,25 @@ def add_returns_to_file(input_file, output_file=None):
         if not codes:
             returns_list.append(np.nan)
             valid_codes_list.append('')
+            industries_list.append('')
             continue
         
-        # 获取所有有效股票的收益率
+        # 获取所有有效股票的收益率和行业
         valid_returns = []
         valid_codes = []
+        valid_industries = []
         
         for code in codes:
+            # 收益率
             if code in price_data.index:
                 pct_chg = price_data.loc[code, 'pct_chg']
                 if pd.notna(pct_chg):
                     valid_returns.append(pct_chg)
                     valid_codes.append(code)
+            
+            # 行业
+            if code in industry_map:
+                valid_industries.append(industry_map[code])
         
         # 计算平均收益率
         if valid_returns:
@@ -89,14 +111,25 @@ def add_returns_to_file(input_file, output_file=None):
         else:
             returns_list.append(np.nan)
             valid_codes_list.append('')
+            
+        # 确定行业（如果有多个行业，取第一个或出现频率最高的）
+        if valid_industries:
+            # 取第一个有效行业
+            industries_list.append(valid_industries[0])
+        else:
+            industries_list.append('')
     
     # 添加新列
     df['return'] = returns_list
     df['return_valid_codes'] = valid_codes_list
+    df['industry'] = industries_list
     
     # 统计
     valid_count = df['return'].notna().sum()
     print(f"成功匹配 {valid_count}/{len(df)} 条记录的收益率")
+    
+    industry_count = (df['industry'] != '').sum()
+    print(f"成功匹配 {industry_count}/{len(df)} 条记录的行业")
     
     if valid_count > 0:
         print(f"收益率统计: 均值={df['return'].mean():.2f}%, 中位数={df['return'].median():.2f}%")
