@@ -85,29 +85,35 @@ def generate_timeseries():
         print(f"Fetching prices for {len(high_score_stocks)} high-score stocks...")
         price_df = pd.read_parquet(PRICE_DATA_PATH)
         # Filter price data to only include these stocks and dates since their first hit
-        # To keep it simple, we'll take all price data for these stocks from the earliest hit date
         min_date = min(stock_first_hit_80.values())
         
-        # Filter and keep only necessary columns to save space
-        cols_to_keep = ['ts_code', 'trade_date', 'open', 'high', 'low', 'close', 'pct_chg', 'vol', 'amount', 'pe', 'pb', 'name']
+        # Select more columns as requested by the user
+        cols = ['ts_code', 'trade_date', 'open', 'high', 'low', 'close', 'pct_chg', 'vol', 'amount', 'pe', 'pb', 'total_mv', 'name', 'industry']
+        available_cols = [c for c in cols if c in price_df.columns]
+        
         tracking_data = price_df[
             (price_df['ts_code'].isin(high_score_stocks)) & 
             (price_df['trade_date'] >= min_date)
-        ][cols_to_keep].copy()
+        ][available_cols].copy()
         
         # Sort
         tracking_data = tracking_data.sort_values(['ts_code', 'trade_date'])
         
         # Group by stock for frontend ease
         stock_prices = {}
-        history_cols = ['trade_date', 'open', 'high', 'low', 'close', 'pct_chg', 'vol', 'amount', 'pe', 'pb']
         for code in high_score_stocks:
             stock_info = tracking_data[tracking_data['ts_code'] == code]
             if not stock_info.empty:
+                # Convert to numeric where appropriate for JSON
+                for c in ['pe', 'pb', 'total_mv', 'amount', 'vol']:
+                    if c in stock_info.columns:
+                        stock_info[c] = pd.to_numeric(stock_info[c], errors='coerce')
+                
                 stock_prices[code] = {
                     'name': stock_info['name'].iloc[0],
+                    'industry': stock_info['industry'].iloc[0] if 'industry' in stock_info.columns else 'Unknown',
                     'first_hit_date': stock_first_hit_80[code],
-                    'history': stock_info[history_cols].to_dict('records')
+                    'history': stock_info.replace({np.nan: None}).to_dict('records')
                 }
         
         with open(DATA_DIR / "high_score_stocks_prices.json", 'w', encoding='utf-8') as f:
@@ -117,4 +123,3 @@ def generate_timeseries():
 
 if __name__ == "__main__":
     generate_timeseries()
-

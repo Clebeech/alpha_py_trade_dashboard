@@ -121,7 +121,9 @@ function App() {
                 setSelectedItem(null)
               }}
             />
-          ) : <div />}
+          ) : (
+            <div className="header-placeholder"></div>
+          )}
         </div>
       </header>
 
