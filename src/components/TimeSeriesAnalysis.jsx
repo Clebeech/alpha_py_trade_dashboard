@@ -243,8 +243,10 @@ function TimeSeriesAnalysis({ currentDayData = [], selectedDate = '' }) {
                 </div>
                 <div className="kanban-cards">
                   {stocks.map(stock => {
-                    const dailyReturn = currentReturnsMap[stock.code]
-                    const returnClass = dailyReturn > 0 ? 'pos-return' : dailyReturn < 0 ? 'neg-return' : ''
+                    // 获取首次入选当天的收益率
+                    const hitDayData = stock.history.find(h => h.trade_date === stock.first_hit_date)
+                    const hitDayReturn = hitDayData ? parseFloat(hitDayData.pct_chg) : undefined
+                    const returnClass = hitDayReturn > 0 ? 'pos-return' : hitDayReturn < 0 ? 'neg-return' : ''
                     
                     return (
                       <div 
@@ -254,9 +256,9 @@ function TimeSeriesAnalysis({ currentDayData = [], selectedDate = '' }) {
                       >
                         <div className="kanban-card-top">
                           <span className="stock-name">{stock.name}</span>
-                          {dailyReturn !== undefined && (
-                            <span className={`return-tag ${dailyReturn >= 0 ? 'pos' : 'neg'}`}>
-                              {dailyReturn > 0 ? '+' : ''}{dailyReturn.toFixed(2)}%
+                          {hitDayReturn !== undefined && (
+                            <span className={`return-tag ${hitDayReturn >= 0 ? 'pos' : 'neg'}`}>
+                              {hitDayReturn > 0 ? '+' : ''}{hitDayReturn.toFixed(2)}%
                             </span>
                           )}
                         </div>
