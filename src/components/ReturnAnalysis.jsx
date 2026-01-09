@@ -255,25 +255,25 @@ function ReturnAnalysis({ data }) {
           </div>
           {segments.map((seg, idx) => (
             <div key={idx} className="table-row">
-              <div className="col-label">
+              <div className="col-label" data-label="评分区间">
                 <span className="segment-label">{seg.label}</span>
               </div>
-              <div className="col-count">{seg.count}</div>
-              <div className="col-return">
+              <div className="col-count" data-label="样本数">{seg.count}</div>
+              <div className="col-return" data-label="平均收益">
                 <span className={seg.avgReturn >= 0 ? 'positive' : 'negative'}>
                   {seg.avgReturn >= 0 ? '+' : ''}{seg.avgReturn.toFixed(2)}%
                 </span>
               </div>
-              <div className="col-range">
+              <div className="col-range" data-label="收益区间">
                 <span className="range-text">
                   {seg.minReturn.toFixed(2)}% ~ {seg.maxReturn.toFixed(2)}%
                 </span>
               </div>
-              <div className="col-positive">
+              <div className="col-positive" data-label="正收益率">
                 <span className="positive-rate">{seg.positiveRate.toFixed(1)}%</span>
                 <span className="positive-count">({seg.positive}/{seg.count})</span>
               </div>
-              <div className="col-chart">
+              <div className="col-chart" data-label="正负分布">
                 <div className="mini-chart">
                   <div 
                     className="chart-bar positive" 
@@ -309,25 +309,25 @@ function ReturnAnalysis({ data }) {
           </div>
           {industryStats.map((ind, idx) => (
             <div key={idx} className="table-row">
-              <div className="col-label">
+              <div className="col-label" data-label="所属行业">
                 <span className="segment-label">{ind.label}</span>
               </div>
-              <div className="col-count">{ind.count}</div>
-              <div className="col-return">
+              <div className="col-count" data-label="样本数">{ind.count}</div>
+              <div className="col-return" data-label="平均收益">
                 <span className={ind.avgReturn >= 0 ? 'positive' : 'negative'}>
                   {ind.avgReturn >= 0 ? '+' : ''}{ind.avgReturn.toFixed(2)}%
                 </span>
               </div>
-              <div className="col-pearson">
+              <div className="col-pearson" data-label="相关性(r)">
                 <span className={`pearson-val ${Math.abs(ind.pearson) > 0.3 ? 'strong' : ''}`}>
                   {ind.count >= 3 ? ind.pearson.toFixed(2) : '-'}
                 </span>
               </div>
-              <div className="col-positive">
+              <div className="col-positive" data-label="正收益率">
                 <span className="positive-rate">{ind.positiveRate.toFixed(1)}%</span>
                 <span className="positive-count">({ind.positive}/{ind.count})</span>
               </div>
-              <div className="col-chart">
+              <div className="col-chart" data-label="正负分布">
                 <div className="mini-chart">
                   <div 
                     className="chart-bar positive" 
