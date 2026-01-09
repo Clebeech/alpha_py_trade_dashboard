@@ -57,13 +57,18 @@ conda run -n pioneer python scripts/add_returns.py --all
 
 ## 数据更新流程
 
-### 方案一：定期批量更新
+### 方案一：定期批量更新（已设置）
 
-使用 cron job 定期处理所有文件：
+使用 cron job 每天在价格数据更新后，自动处理所有文件并同步：
 
 ```bash
-# 每天晚上 19:00 更新所有文件的收益率
-0 19 * * * conda run -n pioneer python /home/shared/alpha_py_trade_dashboard/scripts/add_returns.py --all >> /home/shared/data/logs/add_returns.log 2>&1
+# 每天晚上 19:00 更新并同步
+0 19 * * * /home/shared/alpha_py_trade_dashboard/scripts/update_returns_and_sync.sh
+```
+
+日志查看：
+```bash
+tail -f /home/shared/alpha_py_trade_dashboard/scripts/update_returns_cron.log
 ```
 
 ### 方案二：实时更新（推荐）

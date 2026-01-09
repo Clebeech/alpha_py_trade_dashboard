@@ -1,16 +1,15 @@
 import { useState, useEffect } from 'react'
 import Papa from 'papaparse'
-import { LayoutDashboard, FlaskConical, BarChart3, Activity } from 'lucide-react'
+import { LayoutDashboard, BarChart3, Activity } from 'lucide-react'
 import DataList from './components/DataList'
 import DataDetail from './components/DataDetail'
 import Statistics from './components/Statistics'
 import FileSelector from './components/FileSelector'
-import TestAnalysis from './components/TestAnalysis'
 import ReturnAnalysis from './components/ReturnAnalysis'
 import './App.css'
 
 function App() {
-  const [activeTab, setActiveTab] = useState('dashboard') // 'dashboard', 'return', or 'test'
+  const [activeTab, setActiveTab] = useState('dashboard') // 'dashboard' or 'return'
   const [data, setData] = useState([])
   const [selectedItem, setSelectedItem] = useState(null)
   const [selectedFile, setSelectedFile] = useState('') // 初始为空，由 FileSelector 自动选中最新的
@@ -103,13 +102,6 @@ function App() {
             <Activity size={18} />
             <span>收益率分析</span>
           </button>
-          <button 
-            className={`tab-btn ${activeTab === 'test' ? 'active' : ''}`}
-            onClick={() => setActiveTab('test')}
-          >
-            <FlaskConical size={18} />
-            <span>测试集分析</span>
-          </button>
         </div>
 
         {(activeTab === 'dashboard' || activeTab === 'return') && (
@@ -157,10 +149,6 @@ function App() {
             <ReturnAnalysis data={data} />
           </main>
         )
-      ) : (
-        <main>
-          <TestAnalysis />
-        </main>
       )}
     </div>
   )

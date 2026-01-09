@@ -20,6 +20,9 @@ crontab -e
 ```
 # 每天0-9点每小时检查一次新文件并同步
 0 0-9 * * * /home/shared/alpha_py_trade_dashboard/scripts/check_and_sync.sh >> /home/shared/alpha_py_trade_dashboard/scripts/check_and_sync.log 2>&1
+
+# 每天19点更新所有文件的收益率并同步
+0 19 * * * /home/shared/alpha_py_trade_dashboard/scripts/update_returns_and_sync.sh
 ```
 
 ### 4. 保存并退出
