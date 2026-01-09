@@ -17,7 +17,11 @@ cd "$PROJECT_DIR" || exit 1
 echo "[$DATE] 运行 add_returns.py --all..." >> "$LOG_FILE"
 "$CONDA_BIN" run -n pioneer python scripts/add_returns.py --all >> "$LOG_FILE" 2>&1
 
-# 2. 运行同步脚本
+# 2. 运行时序数据生成脚本
+echo "[$DATE] 运行 generate_timeseries_data.py..." >> "$LOG_FILE"
+"$CONDA_BIN" run -n pioneer python scripts/generate_timeseries_data.py >> "$LOG_FILE" 2>&1
+
+# 3. 运行同步脚本
 echo "[$DATE] 运行 auto_sync.sh..." >> "$LOG_FILE"
 ./scripts/auto_sync.sh >> "$LOG_FILE" 2>&1
 

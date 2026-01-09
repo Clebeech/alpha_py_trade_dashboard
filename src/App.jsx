@@ -1,15 +1,16 @@
 import { useState, useEffect } from 'react'
 import Papa from 'papaparse'
-import { LayoutDashboard, BarChart3, Activity } from 'lucide-react'
+import { LayoutDashboard, BarChart3, Activity, Clock } from 'lucide-react'
 import DataList from './components/DataList'
 import DataDetail from './components/DataDetail'
 import Statistics from './components/Statistics'
 import FileSelector from './components/FileSelector'
 import ReturnAnalysis from './components/ReturnAnalysis'
+import TimeSeriesAnalysis from './components/TimeSeriesAnalysis'
 import './App.css'
 
 function App() {
-  const [activeTab, setActiveTab] = useState('dashboard') // 'dashboard' or 'return'
+  const [activeTab, setActiveTab] = useState('dashboard') // 'dashboard', 'return', or 'timeseries'
   const [data, setData] = useState([])
   const [selectedItem, setSelectedItem] = useState(null)
   const [selectedFile, setSelectedFile] = useState('') // 初始为空，由 FileSelector 自动选中最新的
@@ -102,6 +103,13 @@ function App() {
             <Activity size={18} />
             <span>收益率分析</span>
           </button>
+          <button 
+            className={`tab-btn ${activeTab === 'timeseries' ? 'active' : ''}`}
+            onClick={() => setActiveTab('timeseries')}
+          >
+            <Clock size={18} />
+            <span>时序分析</span>
+          </button>
         </div>
 
         {(activeTab === 'dashboard' || activeTab === 'return') && (
@@ -137,8 +145,7 @@ function App() {
               />
             </div>
           </main>
-        )
-      ) : (
+        ) : activeTab === 'return' ? (
         loading ? (
           <div className="loading-container">
             <div className="spinner"></div>
@@ -149,6 +156,10 @@ function App() {
             <ReturnAnalysis data={data} />
           </main>
         )
+      ) : (
+        <main>
+          <TimeSeriesAnalysis />
+        </main>
       )}
     </div>
   )

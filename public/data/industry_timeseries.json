@@ -1,0 +1,667 @@
+[
+  {
+    "date": "20251231",
+    "industry": "交通运输",
+    "return": 2.2554
+  },
+  {
+    "date": "20251231",
+    "industry": "传媒",
+    "return": 0.5586
+  },
+  {
+    "date": "20251231",
+    "industry": "公用事业",
+    "return": 3.1621
+  },
+  {
+    "date": "20251231",
+    "industry": "农林牧渔",
+    "return": -0.5677
+  },
+  {
+    "date": "20251231",
+    "industry": "医药生物",
+    "return": 0.1015
+  },
+  {
+    "date": "20251231",
+    "industry": "商贸零售",
+    "return": 1.7283
+  },
+  {
+    "date": "20251231",
+    "industry": "国防军工",
+    "return": 0.1178
+  },
+  {
+    "date": "20251231",
+    "industry": "基础化工",
+    "return": -0.3477
+  },
+  {
+    "date": "20251231",
+    "industry": "家用电器",
+    "return": 0.7968
+  },
+  {
+    "date": "20251231",
+    "industry": "建筑材料",
+    "return": -0.4045
+  },
+  {
+    "date": "20251231",
+    "industry": "建筑装饰",
+    "return": 7.0635
+  },
+  {
+    "date": "20251231",
+    "industry": "有色金属",
+    "return": 2.369
+  },
+  {
+    "date": "20251231",
+    "industry": "机械设备",
+    "return": -1.0952
+  },
+  {
+    "date": "20251231",
+    "industry": "汽车",
+    "return": 0.526
+  },
+  {
+    "date": "20251231",
+    "industry": "环保",
+    "return": 0.8467
+  },
+  {
+    "date": "20251231",
+    "industry": "电力设备",
+    "return": 1.8092
+  },
+  {
+    "date": "20251231",
+    "industry": "电子",
+    "return": -0.3828
+  },
+  {
+    "date": "20251231",
+    "industry": "石油石化",
+    "return": -2.2538
+  },
+  {
+    "date": "20251231",
+    "industry": "社会服务",
+    "return": 0.2827
+  },
+  {
+    "date": "20251231",
+    "industry": "纺织服饰",
+    "return": -0.5565
+  },
+  {
+    "date": "20251231",
+    "industry": "综合",
+    "return": -2.3934
+  },
+  {
+    "date": "20251231",
+    "industry": "美容护理",
+    "return": -0.4558
+  },
+  {
+    "date": "20251231",
+    "industry": "计算机",
+    "return": 0.8216
+  },
+  {
+    "date": "20251231",
+    "industry": "轻工制造",
+    "return": -1.4607
+  },
+  {
+    "date": "20251231",
+    "industry": "通信",
+    "return": 0.2831
+  },
+  {
+    "date": "20251231",
+    "industry": "钢铁",
+    "return": 3.5408
+  },
+  {
+    "date": "20251231",
+    "industry": "食品饮料",
+    "return": -0.7634
+  },
+  {
+    "date": "20260105",
+    "industry": "交通运输",
+    "return": 0.3286
+  },
+  {
+    "date": "20260105",
+    "industry": "传媒",
+    "return": 7.1487
+  },
+  {
+    "date": "20260105",
+    "industry": "公用事业",
+    "return": 1.3238
+  },
+  {
+    "date": "20260105",
+    "industry": "农林牧渔",
+    "return": -2.4839
+  },
+  {
+    "date": "20260105",
+    "industry": "医药生物",
+    "return": 6.9028
+  },
+  {
+    "date": "20260105",
+    "industry": "商贸零售",
+    "return": -0.4566
+  },
+  {
+    "date": "20260105",
+    "industry": "国防军工",
+    "return": 3.2172
+  },
+  {
+    "date": "20260105",
+    "industry": "基础化工",
+    "return": 2.0724
+  },
+  {
+    "date": "20260105",
+    "industry": "家用电器",
+    "return": 1.1211
+  },
+  {
+    "date": "20260105",
+    "industry": "建筑材料",
+    "return": 2.4684
+  },
+  {
+    "date": "20260105",
+    "industry": "建筑装饰",
+    "return": 0.7514
+  },
+  {
+    "date": "20260105",
+    "industry": "房地产",
+    "return": 2.8032
+  },
+  {
+    "date": "20260105",
+    "industry": "有色金属",
+    "return": 2.0478
+  },
+  {
+    "date": "20260105",
+    "industry": "机械设备",
+    "return": 2.3029
+  },
+  {
+    "date": "20260105",
+    "industry": "汽车",
+    "return": 0.7706
+  },
+  {
+    "date": "20260105",
+    "industry": "煤炭",
+    "return": 1.8544
+  },
+  {
+    "date": "20260105",
+    "industry": "电力设备",
+    "return": 1.9068
+  },
+  {
+    "date": "20260105",
+    "industry": "电子",
+    "return": 3.5152
+  },
+  {
+    "date": "20260105",
+    "industry": "石油石化",
+    "return": -0.5766
+  },
+  {
+    "date": "20260105",
+    "industry": "社会服务",
+    "return": -0.2664
+  },
+  {
+    "date": "20260105",
+    "industry": "纺织服饰",
+    "return": -0.2752
+  },
+  {
+    "date": "20260105",
+    "industry": "综合",
+    "return": 2.7617
+  },
+  {
+    "date": "20260105",
+    "industry": "美容护理",
+    "return": 1.6694
+  },
+  {
+    "date": "20260105",
+    "industry": "计算机",
+    "return": 2.8235
+  },
+  {
+    "date": "20260105",
+    "industry": "轻工制造",
+    "return": 0.0483
+  },
+  {
+    "date": "20260105",
+    "industry": "通信",
+    "return": 2.4059
+  },
+  {
+    "date": "20260105",
+    "industry": "钢铁",
+    "return": 5.178
+  },
+  {
+    "date": "20260105",
+    "industry": "银行",
+    "return": 1.286
+  },
+  {
+    "date": "20260105",
+    "industry": "非银金融",
+    "return": 4.0153
+  },
+  {
+    "date": "20260105",
+    "industry": "食品饮料",
+    "return": 1.3222
+  },
+  {
+    "date": "20260107",
+    "industry": "交通运输",
+    "return": 0.6187
+  },
+  {
+    "date": "20260107",
+    "industry": "传媒",
+    "return": 4.1684
+  },
+  {
+    "date": "20260107",
+    "industry": "公用事业",
+    "return": 0.654
+  },
+  {
+    "date": "20260107",
+    "industry": "农林牧渔",
+    "return": -1.504
+  },
+  {
+    "date": "20260107",
+    "industry": "医药生物",
+    "return": 2.809
+  },
+  {
+    "date": "20260107",
+    "industry": "商贸零售",
+    "return": -0.8571
+  },
+  {
+    "date": "20260107",
+    "industry": "国防军工",
+    "return": -2.0573
+  },
+  {
+    "date": "20260107",
+    "industry": "基础化工",
+    "return": 0.0862
+  },
+  {
+    "date": "20260107",
+    "industry": "家用电器",
+    "return": -0.4681
+  },
+  {
+    "date": "20260107",
+    "industry": "建筑材料",
+    "return": 0.7752
+  },
+  {
+    "date": "20260107",
+    "industry": "房地产",
+    "return": -1.2791
+  },
+  {
+    "date": "20260107",
+    "industry": "有色金属",
+    "return": 0.8233
+  },
+  {
+    "date": "20260107",
+    "industry": "机械设备",
+    "return": 0.8805
+  },
+  {
+    "date": "20260107",
+    "industry": "汽车",
+    "return": -0.7807
+  },
+  {
+    "date": "20260107",
+    "industry": "环保",
+    "return": -0.5683
+  },
+  {
+    "date": "20260107",
+    "industry": "电力设备",
+    "return": 1.2997
+  },
+  {
+    "date": "20260107",
+    "industry": "电子",
+    "return": 1.5125
+  },
+  {
+    "date": "20260107",
+    "industry": "社会服务",
+    "return": 1.4579
+  },
+  {
+    "date": "20260107",
+    "industry": "纺织服饰",
+    "return": 0.1091
+  },
+  {
+    "date": "20260107",
+    "industry": "美容护理",
+    "return": -0.849
+  },
+  {
+    "date": "20260107",
+    "industry": "计算机",
+    "return": 0.984
+  },
+  {
+    "date": "20260107",
+    "industry": "轻工制造",
+    "return": -2.3138
+  },
+  {
+    "date": "20260107",
+    "industry": "通信",
+    "return": 1.8168
+  },
+  {
+    "date": "20260107",
+    "industry": "银行",
+    "return": -0.845
+  },
+  {
+    "date": "20260107",
+    "industry": "非银金融",
+    "return": -0.9429
+  },
+  {
+    "date": "20260107",
+    "industry": "食品饮料",
+    "return": -0.624
+  },
+  {
+    "date": "20260108",
+    "industry": "交通运输",
+    "return": -0.1804
+  },
+  {
+    "date": "20260108",
+    "industry": "公用事业",
+    "return": 0.1619
+  },
+  {
+    "date": "20260108",
+    "industry": "农林牧渔",
+    "return": 1.4034
+  },
+  {
+    "date": "20260108",
+    "industry": "医药生物",
+    "return": 3.4451
+  },
+  {
+    "date": "20260108",
+    "industry": "商贸零售",
+    "return": 2.1736
+  },
+  {
+    "date": "20260108",
+    "industry": "国防军工",
+    "return": 7.2161
+  },
+  {
+    "date": "20260108",
+    "industry": "基础化工",
+    "return": -1.0373
+  },
+  {
+    "date": "20260108",
+    "industry": "家用电器",
+    "return": 0.8833
+  },
+  {
+    "date": "20260108",
+    "industry": "建筑材料",
+    "return": -0.632
+  },
+  {
+    "date": "20260108",
+    "industry": "建筑装饰",
+    "return": 4.5657
+  },
+  {
+    "date": "20260108",
+    "industry": "房地产",
+    "return": 1.0408
+  },
+  {
+    "date": "20260108",
+    "industry": "有色金属",
+    "return": -4.08
+  },
+  {
+    "date": "20260108",
+    "industry": "机械设备",
+    "return": -1.4606
+  },
+  {
+    "date": "20260108",
+    "industry": "汽车",
+    "return": 1.9092
+  },
+  {
+    "date": "20260108",
+    "industry": "电力设备",
+    "return": 3.146
+  },
+  {
+    "date": "20260108",
+    "industry": "电子",
+    "return": 0.608
+  },
+  {
+    "date": "20260108",
+    "industry": "石油石化",
+    "return": -1.3039
+  },
+  {
+    "date": "20260108",
+    "industry": "社会服务",
+    "return": -2.046
+  },
+  {
+    "date": "20260108",
+    "industry": "纺织服饰",
+    "return": -1.8739
+  },
+  {
+    "date": "20260108",
+    "industry": "综合",
+    "return": 2.6071
+  },
+  {
+    "date": "20260108",
+    "industry": "美容护理",
+    "return": 1.2931
+  },
+  {
+    "date": "20260108",
+    "industry": "计算机",
+    "return": 4.022
+  },
+  {
+    "date": "20260108",
+    "industry": "通信",
+    "return": -6.9782
+  },
+  {
+    "date": "20260108",
+    "industry": "钢铁",
+    "return": -3.6264
+  },
+  {
+    "date": "20260108",
+    "industry": "银行",
+    "return": -0.3683
+  },
+  {
+    "date": "20260108",
+    "industry": "非银金融",
+    "return": -2.786
+  },
+  {
+    "date": "20260108",
+    "industry": "食品饮料",
+    "return": -0.4409
+  },
+  {
+    "date": "20260109",
+    "industry": "交通运输",
+    "return": 0.8958
+  },
+  {
+    "date": "20260109",
+    "industry": "公用事业",
+    "return": 1.081
+  },
+  {
+    "date": "20260109",
+    "industry": "农林牧渔",
+    "return": -0.1388
+  },
+  {
+    "date": "20260109",
+    "industry": "医药生物",
+    "return": 0.748
+  },
+  {
+    "date": "20260109",
+    "industry": "商贸零售",
+    "return": 9.556
+  },
+  {
+    "date": "20260109",
+    "industry": "国防军工",
+    "return": 6.4329
+  },
+  {
+    "date": "20260109",
+    "industry": "基础化工",
+    "return": 4.8436
+  },
+  {
+    "date": "20260109",
+    "industry": "家用电器",
+    "return": 0.9425
+  },
+  {
+    "date": "20260109",
+    "industry": "建筑材料",
+    "return": 0.2122
+  },
+  {
+    "date": "20260109",
+    "industry": "建筑装饰",
+    "return": -4.0804
+  },
+  {
+    "date": "20260109",
+    "industry": "有色金属",
+    "return": 1.0338
+  },
+  {
+    "date": "20260109",
+    "industry": "机械设备",
+    "return": 1.9746
+  },
+  {
+    "date": "20260109",
+    "industry": "汽车",
+    "return": 0.7921
+  },
+  {
+    "date": "20260109",
+    "industry": "环保",
+    "return": 1.964
+  },
+  {
+    "date": "20260109",
+    "industry": "电力设备",
+    "return": 2.7022
+  },
+  {
+    "date": "20260109",
+    "industry": "电子",
+    "return": -0.6681
+  },
+  {
+    "date": "20260109",
+    "industry": "石油石化",
+    "return": 0.7143
+  },
+  {
+    "date": "20260109",
+    "industry": "纺织服饰",
+    "return": 0.9649
+  },
+  {
+    "date": "20260109",
+    "industry": "计算机",
+    "return": 7.7701
+  },
+  {
+    "date": "20260109",
+    "industry": "通信",
+    "return": 2.8313
+  },
+  {
+    "date": "20260109",
+    "industry": "银行",
+    "return": -0.689
+  },
+  {
+    "date": "20260109",
+    "industry": "非银金融",
+    "return": -0.9585
+  },
+  {
+    "date": "20260109",
+    "industry": "食品饮料",
+    "return": 0.8122
+  }
+]
