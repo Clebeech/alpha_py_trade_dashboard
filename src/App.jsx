@@ -163,7 +163,10 @@ function App() {
         )
       ) : (
         <main>
-          <TimeSeriesAnalysis currentDayData={data} />
+          <TimeSeriesAnalysis 
+            currentDayData={data} 
+            selectedDate={selectedFile ? selectedFile.replace('parallel_result_', '').replace('.tsv', '') : ''} 
+          />
         </main>
       )}
     </div>

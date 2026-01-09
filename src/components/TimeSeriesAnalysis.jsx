@@ -1,29 +1,28 @@
 import { useState, useEffect, useMemo } from 'react'
-import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer, ReferenceLine, AreaChart, Area } from 'recharts'
+import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer, ReferenceLine, AreaChart, Area, BarChart, Bar } from 'recharts'
 import { Clock, TrendingUp, BarChart3, Activity, ChevronRight, PieChart, Landmark, Info } from 'lucide-react'
 import './TimeSeriesAnalysis.css'
 
-function TimeSeriesAnalysis({ currentDayData = [] }) {
+function TimeSeriesAnalysis({ currentDayData = [], selectedDate = '' }) {
   const [industryData, setIndustryData] = useState([])
   const [segmentData, setSegmentData] = useState([])
   const [stockPrices, setStockPrices] = useState({})
   const [loading, setLoading] = useState(true)
   const [selectedStock, setSelectedStock] = useState(null)
 
-  // 建立当前日期的个股收益率映射
+  // 建立所选日期的个股收益率映射（从行情历史中提取，确保追踪池全覆盖）
   const currentReturnsMap = useMemo(() => {
     const map = {}
-    currentDayData.forEach(item => {
-      const codes = String(item.identified_stock_codes || '').split(',')
-      codes.forEach(code => {
-        const trimmedCode = code.trim()
-        if (trimmedCode && item.return !== undefined) {
-          map[trimmedCode] = parseFloat(item.return)
-        }
-      })
+    if (!selectedDate) return map
+    
+    Object.entries(stockPrices).forEach(([code, data]) => {
+      const dayData = data.history.find(h => h.trade_date === selectedDate)
+      if (dayData && dayData.pct_chg !== undefined) {
+        map[code] = parseFloat(dayData.pct_chg)
+      }
     })
     return map
-  }, [currentDayData])
+  }, [stockPrices, selectedDate])
 
   useEffect(() => {
     const fetchData = async () => {
@@ -270,11 +269,11 @@ function TimeSeriesAnalysis({ currentDayData = [] }) {
                     </div>
                     <div className="metric-box">
                       <div className="metric-label">总市值</div>
-                      <div className="metric-value">{(selectedStockData.history.slice(-1)[0]?.total_mv / 100000000).toFixed(2)}亿</div>
+                      <div className="metric-value">{(selectedStockData.history.slice(-1)[0]?.total_mv / 10000).toFixed(2)}亿</div>
                     </div>
                     <div className="metric-box">
                       <div className="metric-label">成交额</div>
-                      <div className="metric-value">{(selectedStockData.history.slice(-1)[0]?.amount / 10000).toFixed(0)}万</div>
+                      <div className="metric-value">{(selectedStockData.history.slice(-1)[0]?.amount / 100).toFixed(0)}万</div>
                     </div>
                   </div>
 
@@ -318,7 +317,7 @@ function TimeSeriesAnalysis({ currentDayData = [] }) {
                     <div className="chart-wrapper">
                       <div className="chart-title">成交量变化</div>
                       <ResponsiveContainer width="100%" height={150}>
-                        <BarChart3 data={selectedStockData.history}>
+                        <BarChart data={selectedStockData.history}>
                           <CartesianGrid strokeDasharray="3 3" vertical={false} opacity={0.2} />
                           <XAxis 
                             dataKey="displayDate" 
@@ -326,8 +325,8 @@ function TimeSeriesAnalysis({ currentDayData = [] }) {
                           />
                           <YAxis hide />
                           <Tooltip />
-                          <Line type="step" dataKey="vol" stroke="#94a3b8" />
-                        </BarChart3>
+                          <Bar dataKey="vol" fill="#94a3b8" radius={[2, 2, 0, 0]} />
+                        </BarChart>
                       </ResponsiveContainer>
                     </div>
                   </div>
