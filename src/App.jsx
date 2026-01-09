@@ -112,15 +112,17 @@ function App() {
           </button>
         </div>
 
-        {(activeTab === 'dashboard' || activeTab === 'return') && (
-        <FileSelector 
-          selectedFile={selectedFile} 
-          onFileChange={(file) => {
-            setSelectedFile(file)
-            setSelectedItem(null)
-          }}
-        />
-        )}
+        <div className="header-right">
+          {(activeTab === 'dashboard' || activeTab === 'return') ? (
+            <FileSelector 
+              selectedFile={selectedFile} 
+              onFileChange={(file) => {
+                setSelectedFile(file)
+                setSelectedItem(null)
+              }}
+            />
+          ) : <div />}
+        </div>
       </header>
 
       {activeTab === 'dashboard' ? (

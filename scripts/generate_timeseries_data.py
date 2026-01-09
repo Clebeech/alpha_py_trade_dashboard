@@ -89,23 +89,25 @@ def generate_timeseries():
         min_date = min(stock_first_hit_80.values())
         
         # Filter and keep only necessary columns to save space
+        cols_to_keep = ['ts_code', 'trade_date', 'open', 'high', 'low', 'close', 'pct_chg', 'vol', 'amount', 'pe', 'pb', 'name']
         tracking_data = price_df[
             (price_df['ts_code'].isin(high_score_stocks)) & 
             (price_df['trade_date'] >= min_date)
-        ][['ts_code', 'trade_date', 'close', 'name', 'pct_chg']].copy()
+        ][cols_to_keep].copy()
         
         # Sort
         tracking_data = tracking_data.sort_values(['ts_code', 'trade_date'])
         
         # Group by stock for frontend ease
         stock_prices = {}
+        history_cols = ['trade_date', 'open', 'high', 'low', 'close', 'pct_chg', 'vol', 'amount', 'pe', 'pb']
         for code in high_score_stocks:
             stock_info = tracking_data[tracking_data['ts_code'] == code]
             if not stock_info.empty:
                 stock_prices[code] = {
                     'name': stock_info['name'].iloc[0],
                     'first_hit_date': stock_first_hit_80[code],
-                    'history': stock_info[['trade_date', 'close', 'pct_chg']].to_dict('records')
+                    'history': stock_info[history_cols].to_dict('records')
                 }
         
         with open(DATA_DIR / "high_score_stocks_prices.json", 'w', encoding='utf-8') as f:
