@@ -1,20 +1,39 @@
 import { useState, useEffect } from 'react'
 import Papa from 'papaparse'
-import { LayoutDashboard, BarChart3, Activity, Clock } from 'lucide-react'
+import { LayoutDashboard, BarChart3, Activity, Clock, LogOut, User } from 'lucide-react'
 import DataList from './components/DataList'
 import DataDetail from './components/DataDetail'
 import Statistics from './components/Statistics'
 import FileSelector from './components/FileSelector'
 import ReturnAnalysis from './components/ReturnAnalysis'
 import TimeSeriesAnalysis from './components/TimeSeriesAnalysis'
+import Login from './components/Login'
 import './App.css'
 
 function App() {
+  const [isAuthenticated, setIsAuthenticated] = useState(false)
+  const [currentUser, setCurrentUser] = useState('')
   const [activeTab, setActiveTab] = useState('dashboard') // 'dashboard', 'return', or 'timeseries'
   const [data, setData] = useState([])
   const [selectedItem, setSelectedItem] = useState(null)
   const [selectedFile, setSelectedFile] = useState('') // 初始为空，由 FileSelector 自动选中最新的
   const [loading, setLoading] = useState(false)
+
+  useEffect(() => {
+    const authStatus = localStorage.getItem('isAuthenticated')
+    const authTime = localStorage.getItem('authTime')
+    const user = localStorage.getItem('currentUser')
+    
+    if (authStatus === 'true' && authTime) {
+      const hoursSinceAuth = (Date.now() - parseInt(authTime)) / (1000 * 60 * 60)
+      if (hoursSinceAuth < 24) {
+        setIsAuthenticated(true)
+        setCurrentUser(user || '')
+      } else {
+        handleLogout()
+      }
+    }
+  }, [])
 
   useEffect(() => {
     if (selectedFile) {
@@ -31,6 +50,20 @@ function App() {
       document.body.style.overflow = 'auto'
     }
   }, [selectedItem])
+
+  const handleLogout = () => {
+    localStorage.removeItem('isAuthenticated')
+    localStorage.removeItem('authTime')
+    localStorage.removeItem('currentUser')
+    setIsAuthenticated(false)
+    setCurrentUser('')
+  }
+
+  const handleLogin = () => {
+    setIsAuthenticated(true)
+    const user = localStorage.getItem('currentUser')
+    setCurrentUser(user || '')
+  }
 
   const loadData = async (filename) => {
     setLoading(true)
@@ -80,6 +113,10 @@ function App() {
     }
   }
 
+  if (!isAuthenticated) {
+    return <Login onLogin={handleLogin} />
+  }
+
   return (
     <div className="app">
       <header className="app-header">
@@ -124,6 +161,15 @@ function App() {
           ) : (
             <div className="header-placeholder"></div>
           )}
+          {currentUser && (
+            <div className="user-info">
+              <User size={16} />
+              <span>{currentUser}</span>
+            </div>
+          )}
+          <button className="logout-btn" onClick={handleLogout} title="退出登录">
+            <LogOut size={18} />
+          </button>
         </div>
       </header>
 
