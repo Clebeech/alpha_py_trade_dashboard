@@ -7,6 +7,7 @@ import numpy as np
 from pathlib import Path
 import argparse
 import sys
+import re
 
 DATA_DIR = Path(__file__).parent.parent / "public" / "data"
 PRICE_DATA_PATH = Path("/home/shared/data/raw/market/daily_k_data_hfq.parquet")
@@ -49,7 +50,13 @@ def add_returns_to_file(input_file, output_file=None):
         print(f"文件名格式不正确: {filename}")
         return False
     
-    trade_date = filename.replace('parallel_result_', '').replace('.tsv', '')
+    # 使用正则表达式提取8位数字的日期（支持 _noon 等后缀）
+    match = re.search(r'parallel_result_(\d{8})', filename)
+    if not match:
+        print(f"无法从文件名提取日期: {filename}")
+        return False
+    
+    trade_date = match.group(1)
     print(f"处理文件: {filename}, 日期: {trade_date}")
     
     # 读取 TSV 文件

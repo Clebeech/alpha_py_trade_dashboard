@@ -21,7 +21,8 @@ conda run -n pioneer python scripts/add_returns.py --all
 ```
 
 **功能说明：**
-- 从文件名提取日期（如 `parallel_result_20260108.tsv` → `20260108`）
+- 从文件名提取日期（如 `parallel_result_20260108.tsv` → `20260108`，`parallel_result_20260113_noon.tsv` → `20260113`）
+- 支持带后缀的文件名（如 `_noon`），自动提取8位数字日期
 - 从价格数据库 `/home/shared/data/raw/market/daily_k_data_hfq.parquet` 中读取该日期的收益率
 - 为每条记录匹配股票代码，计算平均收益率（如果有多只股票）
 - 添加 `return` 列（平均收益率）和 `return_valid_codes` 列（有效股票代码）
