@@ -1,23 +1,5 @@
 [
   {
-    "date": "20251231",
-    "segment": "High (>=80)",
-    "return": 1.0932,
-    "count": 10
-  },
-  {
-    "date": "20251231",
-    "segment": "Mid (70-80)",
-    "return": -0.3169,
-    "count": 32
-  },
-  {
-    "date": "20251231",
-    "segment": "Low (<70)",
-    "return": 0.3332,
-    "count": 92
-  },
-  {
     "date": "20260105",
     "segment": "High (>=80)",
     "return": 4.4473,
@@ -124,5 +106,23 @@
     "segment": "Low (<70)",
     "return": -0.7527,
     "count": 73
+  },
+  {
+    "date": "20260113_noon",
+    "segment": "High (>=80)",
+    "return": 2.7134,
+    "count": 2
+  },
+  {
+    "date": "20260113_noon",
+    "segment": "Mid (70-80)",
+    "return": 0.2911,
+    "count": 14
+  },
+  {
+    "date": "20260113_noon",
+    "segment": "Low (<70)",
+    "return": 0.4389,
+    "count": 44
   }
 ]
