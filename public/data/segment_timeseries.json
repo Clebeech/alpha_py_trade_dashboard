@@ -1,5 +1,23 @@
 [
   {
+    "date": "20251231",
+    "segment": "High (>=80)",
+    "return": 1.0932,
+    "count": 10
+  },
+  {
+    "date": "20251231",
+    "segment": "Mid (70-80)",
+    "return": -0.3169,
+    "count": 32
+  },
+  {
+    "date": "20251231",
+    "segment": "Low (<70)",
+    "return": 0.3332,
+    "count": 92
+  },
+  {
     "date": "20260105",
     "segment": "High (>=80)",
     "return": 4.4473,
@@ -124,5 +142,59 @@
     "segment": "Low (<70)",
     "return": 0.4389,
     "count": 44
+  },
+  {
+    "date": "20260114_additional",
+    "segment": "High (>=80)",
+    "return": -3.0377,
+    "count": 1
+  },
+  {
+    "date": "20260114_additional",
+    "segment": "Mid (70-80)",
+    "return": 2.9356,
+    "count": 8
+  },
+  {
+    "date": "20260114_additional",
+    "segment": "Low (<70)",
+    "return": 2.0739,
+    "count": 42
+  },
+  {
+    "date": "20260114_for_trade",
+    "segment": "High (>=80)",
+    "return": 12.3208,
+    "count": 1
+  },
+  {
+    "date": "20260114_for_trade",
+    "segment": "Mid (70-80)",
+    "return": 1.696,
+    "count": 8
+  },
+  {
+    "date": "20260114_for_trade",
+    "segment": "Low (<70)",
+    "return": 2.1643,
+    "count": 16
+  },
+  {
+    "date": "20260114_noon",
+    "segment": "High (>=80)",
+    "return": 11.9811,
+    "count": 2
+  },
+  {
+    "date": "20260114_noon",
+    "segment": "Mid (70-80)",
+    "return": 4.3851,
+    "count": 11
+  },
+  {
+    "date": "20260114_noon",
+    "segment": "Low (<70)",
+    "return": 3.6163,
+    "count": 37
   }
 ]
