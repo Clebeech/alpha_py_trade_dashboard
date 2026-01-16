@@ -196,5 +196,23 @@
     "segment": "Low (<70)",
     "return": 3.6163,
     "count": 37
+  },
+  {
+    "date": "20260115_for_trade",
+    "segment": "High (>=80)",
+    "return": 3.5737,
+    "count": 1
+  },
+  {
+    "date": "20260115_for_trade",
+    "segment": "Mid (70-80)",
+    "return": -0.9939,
+    "count": 28
+  },
+  {
+    "date": "20260115_for_trade",
+    "segment": "Low (<70)",
+    "return": -1.1908,
+    "count": 81
   }
 ]

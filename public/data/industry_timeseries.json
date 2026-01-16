@@ -1273,5 +1273,140 @@
     "date": "20260114_noon",
     "industry": "食品饮料",
     "return": -1.5368
+  },
+  {
+    "date": "20260115_for_trade",
+    "industry": "交通运输",
+    "return": -0.8773
+  },
+  {
+    "date": "20260115_for_trade",
+    "industry": "传媒",
+    "return": -3.7827
+  },
+  {
+    "date": "20260115_for_trade",
+    "industry": "公用事业",
+    "return": 0.1242
+  },
+  {
+    "date": "20260115_for_trade",
+    "industry": "农林牧渔",
+    "return": 0.1212
+  },
+  {
+    "date": "20260115_for_trade",
+    "industry": "医药生物",
+    "return": -0.0157
+  },
+  {
+    "date": "20260115_for_trade",
+    "industry": "商贸零售",
+    "return": -2.5776
+  },
+  {
+    "date": "20260115_for_trade",
+    "industry": "国防军工",
+    "return": -1.198
+  },
+  {
+    "date": "20260115_for_trade",
+    "industry": "基础化工",
+    "return": 4.686
+  },
+  {
+    "date": "20260115_for_trade",
+    "industry": "家用电器",
+    "return": -0.8018
+  },
+  {
+    "date": "20260115_for_trade",
+    "industry": "建筑装饰",
+    "return": -9.9928
+  },
+  {
+    "date": "20260115_for_trade",
+    "industry": "房地产",
+    "return": 0.4932
+  },
+  {
+    "date": "20260115_for_trade",
+    "industry": "有色金属",
+    "return": 2.0118
+  },
+  {
+    "date": "20260115_for_trade",
+    "industry": "机械设备",
+    "return": -0.5337
+  },
+  {
+    "date": "20260115_for_trade",
+    "industry": "汽车",
+    "return": -1.1912
+  },
+  {
+    "date": "20260115_for_trade",
+    "industry": "煤炭",
+    "return": -0.4268
+  },
+  {
+    "date": "20260115_for_trade",
+    "industry": "环保",
+    "return": 0.4078
+  },
+  {
+    "date": "20260115_for_trade",
+    "industry": "电力设备",
+    "return": 1.2148
+  },
+  {
+    "date": "20260115_for_trade",
+    "industry": "电子",
+    "return": 2.2436
+  },
+  {
+    "date": "20260115_for_trade",
+    "industry": "社会服务",
+    "return": -2.9853
+  },
+  {
+    "date": "20260115_for_trade",
+    "industry": "纺织服饰",
+    "return": -3.8486
+  },
+  {
+    "date": "20260115_for_trade",
+    "industry": "综合",
+    "return": -4.1326
+  },
+  {
+    "date": "20260115_for_trade",
+    "industry": "美容护理",
+    "return": -1.9503
+  },
+  {
+    "date": "20260115_for_trade",
+    "industry": "计算机",
+    "return": -3.6909
+  },
+  {
+    "date": "20260115_for_trade",
+    "industry": "轻工制造",
+    "return": -1.1436
+  },
+  {
+    "date": "20260115_for_trade",
+    "industry": "通信",
+    "return": -7.3899
+  },
+  {
+    "date": "20260115_for_trade",
+    "industry": "银行",
+    "return": -0.2279
+  },
+  {
+    "date": "20260115_for_trade",
+    "industry": "食品饮料",
+    "return": -0.1979
   }
 ]
