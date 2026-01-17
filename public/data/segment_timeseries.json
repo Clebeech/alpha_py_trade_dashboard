@@ -214,5 +214,41 @@
     "segment": "Low (<70)",
     "return": -1.1908,
     "count": 81
+  },
+  {
+    "date": "20260116",
+    "segment": "High (>=80)",
+    "return": 2.3557,
+    "count": 2
+  },
+  {
+    "date": "20260116",
+    "segment": "Mid (70-80)",
+    "return": 0.8059,
+    "count": 30
+  },
+  {
+    "date": "20260116",
+    "segment": "Low (<70)",
+    "return": -1.1689,
+    "count": 66
+  },
+  {
+    "date": "20260116_noon",
+    "segment": "High (>=80)",
+    "return": 4.4912,
+    "count": 1
+  },
+  {
+    "date": "20260116_noon",
+    "segment": "Mid (70-80)",
+    "return": 3.3413,
+    "count": 25
+  },
+  {
+    "date": "20260116_noon",
+    "segment": "Low (<70)",
+    "return": 2.0969,
+    "count": 39
   }
 ]
