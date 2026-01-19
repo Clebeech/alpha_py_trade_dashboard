@@ -250,5 +250,23 @@
     "segment": "Low (<70)",
     "return": 2.0969,
     "count": 39
+  },
+  {
+    "date": "20260119",
+    "segment": "High (>=80)",
+    "return": 2.6341,
+    "count": 3
+  },
+  {
+    "date": "20260119",
+    "segment": "Mid (70-80)",
+    "return": 1.5883,
+    "count": 39
+  },
+  {
+    "date": "20260119",
+    "segment": "Low (<70)",
+    "return": -0.3375,
+    "count": 28
   }
 ]
