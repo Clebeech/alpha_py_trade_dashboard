@@ -167,7 +167,7 @@
   {
     "date": "20260105",
     "industry": "国防军工",
-    "return": 3.2172
+    "return": 3.2324
   },
   {
     "date": "20260105",
@@ -222,7 +222,7 @@
   {
     "date": "20260105",
     "industry": "电子",
-    "return": 3.5152
+    "return": 3.5186
   },
   {
     "date": "20260105",
@@ -367,7 +367,7 @@
   {
     "date": "20260107",
     "industry": "电子",
-    "return": 1.5125
+    "return": 1.5085
   },
   {
     "date": "20260107",
@@ -607,7 +607,7 @@
   {
     "date": "20260109",
     "industry": "机械设备",
-    "return": 1.9746
+    "return": 1.9896
   },
   {
     "date": "20260109",
@@ -622,7 +622,7 @@
   {
     "date": "20260109",
     "industry": "电力设备",
-    "return": 2.7022
+    "return": 2.7497
   },
   {
     "date": "20260109",
@@ -732,7 +732,7 @@
   {
     "date": "20260112",
     "industry": "汽车",
-    "return": 1.834
+    "return": 1.8622
   },
   {
     "date": "20260112",
@@ -777,7 +777,7 @@
   {
     "date": "20260112",
     "industry": "通信",
-    "return": 7.2041
+    "return": 7.2123
   },
   {
     "date": "20260112",
@@ -1077,7 +1077,7 @@
   {
     "date": "20260114_additional",
     "industry": "机械设备",
-    "return": 0.1654
+    "return": 0.1938
   },
   {
     "date": "20260114_additional",
@@ -1357,7 +1357,7 @@
   {
     "date": "20260115_for_trade",
     "industry": "电力设备",
-    "return": 1.2148
+    "return": 1.2146
   },
   {
     "date": "20260115_for_trade",
@@ -1442,7 +1442,7 @@
   {
     "date": "20260116",
     "industry": "建筑装饰",
-    "return": 0.4746
+    "return": 0.5848
   },
   {
     "date": "20260116",
@@ -1708,5 +1708,135 @@
     "date": "20260119",
     "industry": "通信",
     "return": -7.7653
+  },
+  {
+    "date": "20260119_jiyao",
+    "industry": "交通运输",
+    "return": 0.3557
+  },
+  {
+    "date": "20260119_jiyao",
+    "industry": "传媒",
+    "return": 0.6406
+  },
+  {
+    "date": "20260119_jiyao",
+    "industry": "农林牧渔",
+    "return": -0.2241
+  },
+  {
+    "date": "20260119_jiyao",
+    "industry": "医药生物",
+    "return": 1.3004
+  },
+  {
+    "date": "20260119_jiyao",
+    "industry": "商贸零售",
+    "return": -0.9996
+  },
+  {
+    "date": "20260119_jiyao",
+    "industry": "国防军工",
+    "return": -0.3801
+  },
+  {
+    "date": "20260119_jiyao",
+    "industry": "基础化工",
+    "return": 2.9674
+  },
+  {
+    "date": "20260119_jiyao",
+    "industry": "家用电器",
+    "return": 0.8097
+  },
+  {
+    "date": "20260119_jiyao",
+    "industry": "建筑材料",
+    "return": 2.4002
+  },
+  {
+    "date": "20260119_jiyao",
+    "industry": "建筑装饰",
+    "return": 1.1803
+  },
+  {
+    "date": "20260119_jiyao",
+    "industry": "房地产",
+    "return": 0.9274
+  },
+  {
+    "date": "20260119_jiyao",
+    "industry": "有色金属",
+    "return": 2.4971
+  },
+  {
+    "date": "20260119_jiyao",
+    "industry": "机械设备",
+    "return": 2.7995
+  },
+  {
+    "date": "20260119_jiyao",
+    "industry": "汽车",
+    "return": 2.6543
+  },
+  {
+    "date": "20260119_jiyao",
+    "industry": "煤炭",
+    "return": 1.2244
+  },
+  {
+    "date": "20260119_jiyao",
+    "industry": "环保",
+    "return": 5.1301
+  },
+  {
+    "date": "20260119_jiyao",
+    "industry": "电力设备",
+    "return": 2.4971
+  },
+  {
+    "date": "20260119_jiyao",
+    "industry": "电子",
+    "return": 0.2803
+  },
+  {
+    "date": "20260119_jiyao",
+    "industry": "石油石化",
+    "return": 1.5411
+  },
+  {
+    "date": "20260119_jiyao",
+    "industry": "美容护理",
+    "return": 0.0867
+  },
+  {
+    "date": "20260119_jiyao",
+    "industry": "计算机",
+    "return": -2.2765
+  },
+  {
+    "date": "20260119_jiyao",
+    "industry": "轻工制造",
+    "return": 1.4908
+  },
+  {
+    "date": "20260119_jiyao",
+    "industry": "通信",
+    "return": -1.7217
+  },
+  {
+    "date": "20260119_jiyao",
+    "industry": "银行",
+    "return": -2.0169
+  },
+  {
+    "date": "20260119_jiyao",
+    "industry": "非银金融",
+    "return": -0.4881
+  },
+  {
+    "date": "20260119_jiyao",
+    "industry": "食品饮料",
+    "return": 0.6923
   }
 ]
