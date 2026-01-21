@@ -1838,5 +1838,240 @@
     "date": "20260119_jiyao",
     "industry": "食品饮料",
     "return": 0.6923
+  },
+  {
+    "date": "20260120",
+    "industry": "交通运输",
+    "return": 1.2578
+  },
+  {
+    "date": "20260120",
+    "industry": "传媒",
+    "return": 0.273
+  },
+  {
+    "date": "20260120",
+    "industry": "公用事业",
+    "return": 1.0693
+  },
+  {
+    "date": "20260120",
+    "industry": "农林牧渔",
+    "return": 0.9828
+  },
+  {
+    "date": "20260120",
+    "industry": "医药生物",
+    "return": -1.9034
+  },
+  {
+    "date": "20260120",
+    "industry": "商贸零售",
+    "return": 0.6868
+  },
+  {
+    "date": "20260120",
+    "industry": "国防军工",
+    "return": 2.078
+  },
+  {
+    "date": "20260120",
+    "industry": "基础化工",
+    "return": 1.9246
+  },
+  {
+    "date": "20260120",
+    "industry": "家用电器",
+    "return": -2.4288
+  },
+  {
+    "date": "20260120",
+    "industry": "建筑材料",
+    "return": -1.6124
+  },
+  {
+    "date": "20260120",
+    "industry": "建筑装饰",
+    "return": -0.6794
+  },
+  {
+    "date": "20260120",
+    "industry": "房地产",
+    "return": 0.9646
+  },
+  {
+    "date": "20260120",
+    "industry": "有色金属",
+    "return": 2.042
+  },
+  {
+    "date": "20260120",
+    "industry": "机械设备",
+    "return": -1.6744
+  },
+  {
+    "date": "20260120",
+    "industry": "汽车",
+    "return": -1.8431
+  },
+  {
+    "date": "20260120",
+    "industry": "电力设备",
+    "return": -0.7879
+  },
+  {
+    "date": "20260120",
+    "industry": "电子",
+    "return": -0.1491
+  },
+  {
+    "date": "20260120",
+    "industry": "社会服务",
+    "return": 1.7526
+  },
+  {
+    "date": "20260120",
+    "industry": "美容护理",
+    "return": -0.5454
+  },
+  {
+    "date": "20260120",
+    "industry": "计算机",
+    "return": -3.4331
+  },
+  {
+    "date": "20260120",
+    "industry": "轻工制造",
+    "return": 1.991
+  },
+  {
+    "date": "20260120",
+    "industry": "通信",
+    "return": -1.2108
+  },
+  {
+    "date": "20260120",
+    "industry": "银行",
+    "return": 1.0914
+  },
+  {
+    "date": "20260120",
+    "industry": "非银金融",
+    "return": 0.448
+  },
+  {
+    "date": "20260120",
+    "industry": "食品饮料",
+    "return": 0.8518
+  },
+  {
+    "date": "20260120_noon",
+    "industry": "交通运输",
+    "return": 1.626
+  },
+  {
+    "date": "20260120_noon",
+    "industry": "传媒",
+    "return": 0.0111
+  },
+  {
+    "date": "20260120_noon",
+    "industry": "农林牧渔",
+    "return": -1.4903
+  },
+  {
+    "date": "20260120_noon",
+    "industry": "医药生物",
+    "return": -3.7209
+  },
+  {
+    "date": "20260120_noon",
+    "industry": "商贸零售",
+    "return": 2.8801
+  },
+  {
+    "date": "20260120_noon",
+    "industry": "国防军工",
+    "return": -0.8201
+  },
+  {
+    "date": "20260120_noon",
+    "industry": "基础化工",
+    "return": 3.3971
+  },
+  {
+    "date": "20260120_noon",
+    "industry": "家用电器",
+    "return": 2.5551
+  },
+  {
+    "date": "20260120_noon",
+    "industry": "建筑装饰",
+    "return": 0.2717
+  },
+  {
+    "date": "20260120_noon",
+    "industry": "有色金属",
+    "return": 2.4063
+  },
+  {
+    "date": "20260120_noon",
+    "industry": "机械设备",
+    "return": -0.3831
+  },
+  {
+    "date": "20260120_noon",
+    "industry": "汽车",
+    "return": 0.8966
+  },
+  {
+    "date": "20260120_noon",
+    "industry": "煤炭",
+    "return": -1.9397
+  },
+  {
+    "date": "20260120_noon",
+    "industry": "环保",
+    "return": 5.1498
+  },
+  {
+    "date": "20260120_noon",
+    "industry": "电力设备",
+    "return": -0.854
+  },
+  {
+    "date": "20260120_noon",
+    "industry": "电子",
+    "return": 2.1163
+  },
+  {
+    "date": "20260120_noon",
+    "industry": "社会服务",
+    "return": 3.6886
+  },
+  {
+    "date": "20260120_noon",
+    "industry": "纺织服饰",
+    "return": -0.1031
+  },
+  {
+    "date": "20260120_noon",
+    "industry": "美容护理",
+    "return": 4.1647
+  },
+  {
+    "date": "20260120_noon",
+    "industry": "轻工制造",
+    "return": 3.6873
+  },
+  {
+    "date": "20260120_noon",
+    "industry": "通信",
+    "return": -1.2141
+  },
+  {
+    "date": "20260120_noon",
+    "industry": "食品饮料",
+    "return": 0.1939
   }
 ]
