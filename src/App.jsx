@@ -68,7 +68,8 @@ function App() {
   const loadData = async (filename) => {
     setLoading(true)
     try {
-      const response = await fetch(`/data/${filename}`)
+      const base = import.meta.env.BASE_URL || '/'
+      const response = await fetch(`${base}data/${filename}`)
       const text = await response.text()
       
       Papa.parse(text, {

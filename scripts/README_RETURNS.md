@@ -13,11 +13,34 @@
 **使用方法：**
 
 ```bash
-# 处理单个文件
+# 处理单个文件（支持带后缀的文件名，如 _noon）
 conda run -n pioneer python scripts/add_returns.py --file public/data/parallel_result_20260108.tsv
+conda run -n pioneer python scripts/add_returns.py --file public/data/parallel_result_20260113_noon.tsv
 
-# 处理所有文件
+# 处理所有文件（包括所有带后缀的文件）
 conda run -n pioneer python scripts/add_returns.py --all
+```
+
+**手动更新步骤：**
+
+1. 进入项目目录：
+```bash
+cd /home/shared/alpha_py_trade_dashboard
+```
+
+2. 更新单个文件：
+```bash
+conda run -n pioneer python scripts/add_returns.py --file public/data/parallel_result_20260113_noon.tsv
+```
+
+3. 更新所有文件（推荐，会自动处理所有 `parallel_result_*.tsv` 文件，包括带 `_noon`、`_additional` 等后缀的）：
+```bash
+conda run -n pioneer python scripts/add_returns.py --all
+```
+
+4. 如果需要同步到 GitHub，运行：
+```bash
+./scripts/auto_sync.sh
 ```
 
 **功能说明：**
@@ -63,8 +86,8 @@ conda run -n pioneer python scripts/add_returns.py --all
 使用 cron job 每天在价格数据更新后，自动处理所有文件并同步：
 
 ```bash
-# 每天晚上 19:00 更新并同步
-0 19 * * * /home/shared/alpha_py_trade_dashboard/scripts/update_returns_and_sync.sh
+# 每天下午 16:00 更新并同步
+0 16 * * * /home/shared/alpha_py_trade_dashboard/scripts/update_returns_and_sync.sh
 ```
 
 日志查看：

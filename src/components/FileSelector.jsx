@@ -6,7 +6,8 @@ function FileSelector({ selectedFile, onFileChange }) {
 
   useEffect(() => {
     // 自动读取文件列表
-    fetch('/data/file-list.json')
+    const base = import.meta.env.BASE_URL || '/'
+    fetch(`${base}data/file-list.json`)
       .then(res => res.json())
       .then(data => {
         setFiles(data)

@@ -37,7 +37,8 @@ if [ ! -d "$DATA_DIR" ]; then
 fi
 
 # 4. 更新 file-list.json（可选，如果需要的话）
-# 这里可以添加逻辑来更新文件列表
+echo "[$DATE] 更新 file-list.json..."
+python3 "$PROJECT_DIR/scripts/update_file_list.py" || echo "警告: 更新 file-list.json 失败，继续执行..."
 
 # 5. Git 提交和推送
 # 添加 public/data 下的所有变化

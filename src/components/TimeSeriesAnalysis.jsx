@@ -40,10 +40,11 @@ function TimeSeriesAnalysis({ currentDayData = [], selectedDate = '' }) {
   useEffect(() => {
     const fetchData = async () => {
       try {
+        const base = import.meta.env.BASE_URL || '/'
         const [indRes, segRes, stockRes] = await Promise.all([
-          fetch('/data/industry_timeseries.json'),
-          fetch('/data/segment_timeseries.json'),
-          fetch('/data/high_score_stocks_prices.json')
+          fetch(`${base}data/industry_timeseries.json`),
+          fetch(`${base}data/segment_timeseries.json`),
+          fetch(`${base}data/high_score_stocks_prices.json`)
         ])
         
         const indJson = await indRes.json()
