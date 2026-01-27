@@ -2568,5 +2568,130 @@
     "date": "20260123",
     "industry": "食品饮料",
     "return": 1.1398
+  },
+  {
+    "date": "20260126",
+    "industry": "交通运输",
+    "return": 5.7527
+  },
+  {
+    "date": "20260126",
+    "industry": "传媒",
+    "return": 0.3693
+  },
+  {
+    "date": "20260126",
+    "industry": "公用事业",
+    "return": 0.0095
+  },
+  {
+    "date": "20260126",
+    "industry": "农林牧渔",
+    "return": 0.3558
+  },
+  {
+    "date": "20260126",
+    "industry": "医药生物",
+    "return": 2.2895
+  },
+  {
+    "date": "20260126",
+    "industry": "商贸零售",
+    "return": -1.3475
+  },
+  {
+    "date": "20260126",
+    "industry": "国防军工",
+    "return": -3.5044
+  },
+  {
+    "date": "20260126",
+    "industry": "基础化工",
+    "return": 4.5037
+  },
+  {
+    "date": "20260126",
+    "industry": "家用电器",
+    "return": -2.3183
+  },
+  {
+    "date": "20260126",
+    "industry": "建筑装饰",
+    "return": 0.6818
+  },
+  {
+    "date": "20260126",
+    "industry": "房地产",
+    "return": -2.9619
+  },
+  {
+    "date": "20260126",
+    "industry": "有色金属",
+    "return": 3.8582
+  },
+  {
+    "date": "20260126",
+    "industry": "机械设备",
+    "return": 1.8812
+  },
+  {
+    "date": "20260126",
+    "industry": "汽车",
+    "return": 0.5793
+  },
+  {
+    "date": "20260126",
+    "industry": "环保",
+    "return": -1.9701
+  },
+  {
+    "date": "20260126",
+    "industry": "电力设备",
+    "return": -0.484
+  },
+  {
+    "date": "20260126",
+    "industry": "电子",
+    "return": 0.6769
+  },
+  {
+    "date": "20260126",
+    "industry": "社会服务",
+    "return": -1.7292
+  },
+  {
+    "date": "20260126",
+    "industry": "纺织服饰",
+    "return": 2.2906
+  },
+  {
+    "date": "20260126",
+    "industry": "美容护理",
+    "return": -1.5701
+  },
+  {
+    "date": "20260126",
+    "industry": "计算机",
+    "return": -2.083
+  },
+  {
+    "date": "20260126",
+    "industry": "通信",
+    "return": 8.1604
+  },
+  {
+    "date": "20260126",
+    "industry": "银行",
+    "return": 1.0735
+  },
+  {
+    "date": "20260126",
+    "industry": "非银金融",
+    "return": 2.1229
+  },
+  {
+    "date": "20260126",
+    "industry": "食品饮料",
+    "return": -0.2571
   }
 ]
