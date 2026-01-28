@@ -2693,5 +2693,125 @@
     "date": "20260126",
     "industry": "食品饮料",
     "return": -0.2571
+  },
+  {
+    "date": "20260127",
+    "industry": "交通运输",
+    "return": 1.7085
+  },
+  {
+    "date": "20260127",
+    "industry": "传媒",
+    "return": -1.0419
+  },
+  {
+    "date": "20260127",
+    "industry": "公用事业",
+    "return": -0.3054
+  },
+  {
+    "date": "20260127",
+    "industry": "医药生物",
+    "return": 3.3284
+  },
+  {
+    "date": "20260127",
+    "industry": "商贸零售",
+    "return": 1.0716
+  },
+  {
+    "date": "20260127",
+    "industry": "国防军工",
+    "return": 2.9219
+  },
+  {
+    "date": "20260127",
+    "industry": "基础化工",
+    "return": 3.8543
+  },
+  {
+    "date": "20260127",
+    "industry": "家用电器",
+    "return": -0.0534
+  },
+  {
+    "date": "20260127",
+    "industry": "建筑材料",
+    "return": -0.4613
+  },
+  {
+    "date": "20260127",
+    "industry": "建筑装饰",
+    "return": 5.0634
+  },
+  {
+    "date": "20260127",
+    "industry": "房地产",
+    "return": -3.561
+  },
+  {
+    "date": "20260127",
+    "industry": "有色金属",
+    "return": 1.8529
+  },
+  {
+    "date": "20260127",
+    "industry": "机械设备",
+    "return": 1.2833
+  },
+  {
+    "date": "20260127",
+    "industry": "汽车",
+    "return": 0.7413
+  },
+  {
+    "date": "20260127",
+    "industry": "煤炭",
+    "return": -3.0415
+  },
+  {
+    "date": "20260127",
+    "industry": "环保",
+    "return": 0.1124
+  },
+  {
+    "date": "20260127",
+    "industry": "电力设备",
+    "return": 0.2942
+  },
+  {
+    "date": "20260127",
+    "industry": "电子",
+    "return": 5.1152
+  },
+  {
+    "date": "20260127",
+    "industry": "社会服务",
+    "return": 1.8263
+  },
+  {
+    "date": "20260127",
+    "industry": "纺织服饰",
+    "return": 0.156
+  },
+  {
+    "date": "20260127",
+    "industry": "计算机",
+    "return": 4.5061
+  },
+  {
+    "date": "20260127",
+    "industry": "通信",
+    "return": 2.1562
+  },
+  {
+    "date": "20260127",
+    "industry": "非银金融",
+    "return": 0.8846
+  },
+  {
+    "date": "20260127",
+    "industry": "食品饮料",
+    "return": -1.0936
   }
 ]
