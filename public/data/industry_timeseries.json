@@ -3083,5 +3083,155 @@
     "date": "20260129",
     "industry": "食品饮料",
     "return": 6.5037
+  },
+  {
+    "date": "20260202",
+    "industry": "交通运输",
+    "return": -2.3823
+  },
+  {
+    "date": "20260202",
+    "industry": "传媒",
+    "return": -0.7497
+  },
+  {
+    "date": "20260202",
+    "industry": "公用事业",
+    "return": -1.7079
+  },
+  {
+    "date": "20260202",
+    "industry": "农林牧渔",
+    "return": -2.897
+  },
+  {
+    "date": "20260202",
+    "industry": "医药生物",
+    "return": -3.2702
+  },
+  {
+    "date": "20260202",
+    "industry": "商贸零售",
+    "return": -0.8452
+  },
+  {
+    "date": "20260202",
+    "industry": "国防军工",
+    "return": -3.3703
+  },
+  {
+    "date": "20260202",
+    "industry": "基础化工",
+    "return": -3.8345
+  },
+  {
+    "date": "20260202",
+    "industry": "家用电器",
+    "return": -1.8449
+  },
+  {
+    "date": "20260202",
+    "industry": "建筑材料",
+    "return": -3.4686
+  },
+  {
+    "date": "20260202",
+    "industry": "建筑装饰",
+    "return": -2.4931
+  },
+  {
+    "date": "20260202",
+    "industry": "房地产",
+    "return": -4.889
+  },
+  {
+    "date": "20260202",
+    "industry": "有色金属",
+    "return": -6.2861
+  },
+  {
+    "date": "20260202",
+    "industry": "机械设备",
+    "return": -2.1144
+  },
+  {
+    "date": "20260202",
+    "industry": "汽车",
+    "return": -2.452
+  },
+  {
+    "date": "20260202",
+    "industry": "煤炭",
+    "return": -5.1573
+  },
+  {
+    "date": "20260202",
+    "industry": "环保",
+    "return": -1.3807
+  },
+  {
+    "date": "20260202",
+    "industry": "电力设备",
+    "return": -0.6238
+  },
+  {
+    "date": "20260202",
+    "industry": "电子",
+    "return": -4.6596
+  },
+  {
+    "date": "20260202",
+    "industry": "石油石化",
+    "return": -7.3685
+  },
+  {
+    "date": "20260202",
+    "industry": "社会服务",
+    "return": 0.1224
+  },
+  {
+    "date": "20260202",
+    "industry": "纺织服饰",
+    "return": -6.717
+  },
+  {
+    "date": "20260202",
+    "industry": "美容护理",
+    "return": -0.1093
+  },
+  {
+    "date": "20260202",
+    "industry": "计算机",
+    "return": 0.1244
+  },
+  {
+    "date": "20260202",
+    "industry": "轻工制造",
+    "return": -1.7433
+  },
+  {
+    "date": "20260202",
+    "industry": "通信",
+    "return": -1.4438
+  },
+  {
+    "date": "20260202",
+    "industry": "钢铁",
+    "return": -5.6826
+  },
+  {
+    "date": "20260202",
+    "industry": "银行",
+    "return": -1.2595
+  },
+  {
+    "date": "20260202",
+    "industry": "非银金融",
+    "return": -1.6862
+  },
+  {
+    "date": "20260202",
+    "industry": "食品饮料",
+    "return": 1.2891
   }
 ]
